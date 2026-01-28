@@ -19,6 +19,16 @@ unity/.vsconfig
 
 
 #########################
+## Unity Assets
+#########################
+
+# Ultimate Editor Enhanced (UEE)
+unity/Assets/Plugins/Infinity Code/Ultimate Editor Enhancer Settings/
+unity/Assets/Plugins/Infinity Code/Ultimate Editor Enhancer Settings.meta
+unity/SceneBackups/
+
+
+#########################
 ## VISUAL STUDIO
 #########################
 
