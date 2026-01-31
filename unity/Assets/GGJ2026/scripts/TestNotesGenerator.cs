@@ -11,13 +11,13 @@ namespace GGJ2026
     public class TestNotesGenerator : MonoBehaviour
     {
         [SerializeField, ListDrawerSettings(ShowFoldout = false, IsReadOnly = true)]
-        private string[] _noteInputActionNames = Enumerable.Range(0, NoteConstants.NoteCount).Select(x => $"test-note{x}").ToArray();
+        private string[] _noteInputActionNames = Enumerable.Range(0, Constants.NoteCount).Select(x => $"test-note{x}").ToArray();
 
         public UnityEvent<NoteData> SpawnNote = new();
 
         private void Awake()
         {
-            for (int i = 0; i < NoteConstants.NoteCount; i++) {
+            for (int i = 0; i < Constants.NoteCount; i++) {
                 InputAction action = InputSystem.actions[_noteInputActionNames[i]];
                 int noteIndex = i;  // Don't accidentally capture the iteration var
                 action.performed += ctx => generateNote(new NoteData { NoteId = noteIndex });
