@@ -23,7 +23,7 @@ namespace GGJ2026
             for (int i = 0; i < _noteIndicators!.Count; i++) {
                 NoteIndicator noteIndicator = _noteIndicators![i];
                 noteIndicator.transform.position += _moveSpeed * deltaTime * _moveDirection;
-                if (noteIndicator.transform.position.x > _missedX) {
+                if (noteIndicator.transform.position.x - (noteIndicator.transform.localScale.x * 64) > _missedX) {
                     _noteIndicators[i] = _noteIndicators[^1];
                     _noteIndicators.RemoveAt(_noteIndicators.Count - 1);
                     Debug.Log($"Missed note of type {noteIndicator.NoteIndex}");
