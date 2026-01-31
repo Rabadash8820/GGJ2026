@@ -1,3 +1,5 @@
+#nullable enable
+
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,7 +9,7 @@ namespace GGJ2026
 {
     public class NotesGenerator : MonoBehaviour
     {
-        public UnityEvent<NoteType> SpawnNote { get; private set; } = new();
+        public UnityEvent<int> SpawnNote { get; private set; } = new();
 
         private NoteScript? _noteScript;
         private float _scriptStart;
@@ -17,12 +19,12 @@ namespace GGJ2026
             _scriptStart = Time.time;
             
             //initialize with test values
-            var notes = new List<KeyValuePair<float, NoteType>>()
+            var notes = new List<KeyValuePair<float, int>>()
             {
-                new(1, NoteType.Note1),
-                new(2, NoteType.Note2),
-                new(3, NoteType.Note3),
-                new(4, NoteType.Note4)
+                new(1, 0),
+                new(2, 1),
+                new(3, 2),
+                new(4, 3)
             };
             
             _noteScript = new NoteScript { Notes = notes };
