@@ -1,0 +1,22 @@
+{
+	"BeatsPerMinute": 150,
+	"Notes": 
+	[
+		{ "Bar": 8, "Beat": 3, "Duration": 1, "NoteId": 1 },
+		{ "Bar": 8, "Beat": 4, "Duration": 1, "NoteId": 2 },
+		{ "Bar": 9, "Beat": 1, "Duration": 3, "NoteId": 4 },
+		{ "Bar": 9, "Beat": 4, "Duration": 1, "NoteId": 3 },
+		{ "Bar": 10, "Beat": 1, "Duration": 3, "NoteId": 2 },
+		{ "Bar": 10, "Beat": 4.5, "Duration": 1, "NoteId": 1 },
+		{ "Bar": 11, "Beat": 1, "Duration": 6, "NoteId": 2 },
+		{ "Bar": 12, "Beat": 3, "Duration": 1, "NoteId": 1 },
+		{ "Bar": 12, "Beat": 4, "Duration": 1, "NoteId": 2 },
+		{ "Bar": 13, "Beat": 1, "Duration": 3, "NoteId": 4 },
+		{ "Bar": 13, "Beat": 4.5, "Duration": 1, "NoteId": 3 },
+		{ "Bar": 14, "Beat": 1, "Duration": 3, "NoteId": 3 },
+		{ "Bar": 14, "Beat": 4.5, "Duration": 1, "NoteId": 2 },
+		{ "Bar": 15, "Beat": 1, "Duration": 3, "NoteId": 3 },
+		{ "Bar": 15, "Beat": 4.5, "Duration": 1, "NoteId": 2 },
+		{ "Bar": 16, "Beat": 1, "Duration": 8, "NoteId": 1 },
+	]
+}

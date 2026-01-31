@@ -6,9 +6,11 @@ namespace GGJ2026
     /// <summary>
     /// 
     /// </summary>
-    public class NoteScript
+    public class MusicScript
     {
+        public float BeatsPerMinute { get; set; }
+        
         // TODO: Enforce ordering here. Unfortunately, no PrioriyQueue available.
-        public List<KeyValuePair<float, int>> Notes { get; set; } = new List<KeyValuePair<float, int>>();
+        public List<NoteData> Notes { get; set; } = new();
     }
 }

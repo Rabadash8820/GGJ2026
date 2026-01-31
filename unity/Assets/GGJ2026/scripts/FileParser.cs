@@ -1,13 +1,17 @@
 using System;
 using Newtonsoft.Json;
+using UnityEditor;
+using UnityEngine;
 
 namespace GGJ2026
 {
-    public class FileParser
+    public static class FileParser
     {
-        public NoteScript Parse(string str)
+        public static MusicScript Parse(string str)
         {
-            var script = JsonConvert.DeserializeObject<NoteScript>(str);
+            //TODO: Hard-coded asset for now.
+            var json = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/GGJ2026/test-song-data.json");
+            var script = JsonConvert.DeserializeObject<MusicScript>(json.text);
             if (script is null) { throw new InvalidOperationException(); }
             return script;
         }
