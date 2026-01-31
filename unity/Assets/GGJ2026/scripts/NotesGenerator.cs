@@ -19,7 +19,7 @@ namespace GGJ2026
             StartMusic.Invoke();
             foreach (var note in script.Notes)
             {
-                var absoluteBeat = note.Bar * NoteConstants.BeatsPerMeasure + note.Beat;
+                var absoluteBeat = note.Bar * Constants.BeatsPerMeasure + note.Beat;
                 var time = absoluteBeat / (script.BeatsPerMinute / 60);
 
                 StartCoroutine(spawnNote(note, (float)time));

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3493164900288659656
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3759708185546135684, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -480
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759708185546135684, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759708185546135684, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759708185546135684, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759708185546135684, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563441159813520342, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6598622667072425665, guid: 950eed60a408a2b4aae5caab9ab7396b, type: 3}
+    - target: {fileID: 7672701256692312683, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_Name
+      value: old-lady
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581040895477776961, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_Size.x
+      value: 5.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581040895477776961, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_Size.y
+      value: 8.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581040895477776961, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6598622667072425665, guid: 950eed60a408a2b4aae5caab9ab7396b, type: 3}
+    - target: {fileID: 8581040895477776961, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cfce3f260f41ac24285d4738300cda12, type: 3}

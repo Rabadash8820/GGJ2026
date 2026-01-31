@@ -11,7 +11,7 @@ namespace GGJ2026
     public class NoteHitter : MonoBehaviour
     {
         [SerializeField, ListDrawerSettings(ShowFoldout = false, IsReadOnly = true)]
-        private string[] _noteInputActionNames = Enumerable.Range(0, NoteConstants.NoteCount).Select(x => $"note{x}").ToArray();
+        private string[] _noteInputActionNames = Enumerable.Range(0, Constants.NoteCount).Select(x => $"note{x}").ToArray();
 
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private NotesSpawner? _noteSpawner;
@@ -25,7 +25,7 @@ namespace GGJ2026
 
         private void Awake()
         {
-            for (int i = 0; i < NoteConstants.NoteCount; i++) {
+            for (int i = 0; i < Constants.NoteCount; i++) {
                 InputAction action = InputSystem.actions[_noteInputActionNames[i]];
                 int noteIndex = i;  // Don't accidentally capture the iteration var
                 action.performed += ctx => tryHitNote(noteIndex);
