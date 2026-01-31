@@ -10,7 +10,7 @@ namespace GGJ2026
     public class NotesGenerator : MonoBehaviour
     {
         public UnityEvent<int> SpawnNote { get; private set; } = new();
-
+        
         private NoteScript? _noteScript;
         private float _scriptStart;
         
