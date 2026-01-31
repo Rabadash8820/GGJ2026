@@ -7,12 +7,12 @@ namespace GGJ2026
 {
     public class NotesGenerator : MonoBehaviour
     {
-        public UnityEvent<NoteType> SpawnNote { get; set; }
+        public UnityEvent<NoteType> SpawnNote { get; private set; } = new();
 
         private NoteScript? _noteScript;
         private float _scriptStart;
         
-        void Start()
+        private void Start()
         {
             _scriptStart = Time.time;
             
@@ -29,9 +29,9 @@ namespace GGJ2026
         }
         
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            var time = Time.time - _scriptStart;
+            float time = Time.time - _scriptStart;
             if (_noteScript is null) { return; }
             if (_noteScript.Notes.Any() == false) { return; }
             while (_noteScript.Notes.First().Key <= time)

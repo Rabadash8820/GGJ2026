@@ -1,12 +1,11 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityUtil.Updating;
 
 #nullable enable
 
 namespace GGJ2026
 {
-    public class NoteIndicatorMover : Updatable
+    public class NoteIndicatorMover : MonoBehaviour
     {
         private Transform[]? _noteTransforms;
 
@@ -17,17 +16,11 @@ namespace GGJ2026
 
         public float MoveSpeed = 5f;
 
-        protected override void Awake()
+        private void Awake() => _noteTransforms = NotesParent.GetComponentsInChildren<Transform>();
+
+        private void Update()
         {
-            base.Awake();
-
-            _noteTransforms = NotesParent.GetComponentsInChildren<Transform>();
-
-            AddUpdate(updateNotes);
-        }
-
-        private void updateNotes(float deltaTime)
-        {
+            float deltaTime = Time.deltaTime;
             foreach (Transform noteTransform in _noteTransforms!)
                 noteTransform.position += MoveSpeed * deltaTime * MoveDirection;
         }
