@@ -63,7 +63,9 @@ namespace GGJ2026
         public void ShowNoteFromPool(NoteData noteData)
         {
             Assert.IsTrue(noteData.NoteId >= 0);
-
+            
+            Debug.Log($"Showing note: {noteData.Bar}:{noteData.Beat} [Id-{noteData.NoteId}] {noteData.Duration}");        
+            
             NoteIndicator noteIndicator = _notePools[noteData.NoteId].TryDequeue(out noteIndicator) 
                 ? noteIndicator : instantiateNote(noteData.NoteId);
             noteIndicator.gameObject.SetActive(true);
