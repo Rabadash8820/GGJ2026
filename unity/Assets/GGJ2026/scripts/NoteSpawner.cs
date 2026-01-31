@@ -66,16 +66,18 @@ namespace GGJ2026
             
             Debug.Log($"Showing note: {noteData.Bar}:{noteData.Beat} [Id-{noteData.NoteId}] {noteData.Duration}");        
             
-            NoteIndicator noteIndicator = _notePools[noteData.NoteId].TryDequeue(out noteIndicator) 
-                ? noteIndicator : instantiateNote(noteData.NoteId);
+            var noteIndicator = instantiateNote(noteData.NoteId);
+            // NoteIndicator noteIndicator = _notePools[noteData.NoteId].TryDequeue(out noteIndicator) 
+            //     ? noteIndicator : instantiateNote(noteData.NoteId);
             noteIndicator.gameObject.SetActive(true);
             _shownNotes.Add(noteIndicator);
             NoteSpawned.Invoke(noteIndicator);
             
             if (noteData.Duration > 1)
             {
-                NoteIndicator heldNoteIndicator = _noteHeldPools[noteData.NoteId].TryDequeue(out heldNoteIndicator)
-                    ? heldNoteIndicator : instantiateNote(noteData.NoteId, true);
+                var heldNoteIndicator = instantiateNote(noteData.NoteId, true);
+                // NoteIndicator heldNoteIndicator = _noteHeldPools[noteData.NoteId].TryDequeue(out heldNoteIndicator)
+                //     ? heldNoteIndicator : instantiateNote(noteData.NoteId, true);
                 heldNoteIndicator.gameObject.SetActive(true);
                 heldNoteIndicator.transform.localScale = new Vector3((float)noteData.Duration, 1, 1);
                 heldNoteIndicator.transform.position += new Vector3((float)-noteData.Duration * 64, 0, 0);
