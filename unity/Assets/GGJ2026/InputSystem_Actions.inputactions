@@ -41,6 +41,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "test-note0",
+                    "type": "Button",
+                    "id": "c712629d-6de7-4323-a07c-881979ff9955",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "test-note1",
+                    "type": "Button",
+                    "id": "a9335dab-dd5d-401c-a367-eadd9b342998",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "test-note2",
+                    "type": "Button",
+                    "id": "8c8a640c-3a9a-4434-bde6-014b7dc02649",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "test-note3",
+                    "type": "Button",
+                    "id": "1b1497a5-9e59-4bdc-bc04-785a00326401",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -68,6 +104,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a9dec468-968e-498a-9bc4-afdce852262c",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "test-note0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "db24a87e-4dcc-434e-8800-f42ca2318e5c",
                     "path": "<Keyboard>/2",
                     "interactions": "",
@@ -85,6 +132,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "note1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20e09b16-05b9-4c9d-8c64-8fb825414cf6",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "test-note1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -112,6 +170,17 @@
                 },
                 {
                     "name": "",
+                    "id": "82796bca-52f6-4a9e-99e2-c437bb5c72c3",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "test-note2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "24f95da8-d61c-487a-b05f-290c38b78718",
                     "path": "<Keyboard>/4",
                     "interactions": "",
@@ -129,6 +198,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "note3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c38928cf-0ff5-42ff-92a4-b5615fa14404",
+                    "path": "<Keyboard>/semicolon",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "test-note3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -4,7 +4,7 @@ namespace GGJ2026
 {
     public class NoteIndicator : MonoBehaviour
     {
-        [field: SerializeField]
-        public int NoteIndex { get; private set; }
+        [field: SerializeField] public int NoteIndex { get; private set; }
+        [field: SerializeField] public float Width { get; private set; }
     }
 }

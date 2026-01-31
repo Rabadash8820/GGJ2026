@@ -14,16 +14,15 @@ namespace GGJ2026
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private UIDocument? _uiDocument;
 
-        [field: SerializeField] public int TotalNoteCount { get; private set; }
+        [field: SerializeField] public int ShownNoteCount { get; private set; }
 
         [SerializeField] private string _lblAccuracyName = "lbl-accuracy";
         [SerializeField] private string _lblAccuracyFormatString = "{0} / {1}";
 
-        private void Awake()
-        {
-            _lblAccuracy = _uiDocument!.rootVisualElement.Query<Label>(_lblAccuracyName).First();
-        }
+        private void Awake() => _lblAccuracy = _uiDocument!.rootVisualElement.Query<Label>(_lblAccuracyName).First();
 
-        public void HitNote() => _lblAccuracy!.text = string.Format(_lblAccuracyFormatString, ++_hitNoteCount, TotalNoteCount);
+        public void IncrementShownNoteCount() => _lblAccuracy!.text = string.Format(_lblAccuracyFormatString, _hitNoteCount, ++ShownNoteCount);
+
+        public void HitNote() => _lblAccuracy!.text = string.Format(_lblAccuracyFormatString, ++_hitNoteCount, ShownNoteCount);
     }
 }

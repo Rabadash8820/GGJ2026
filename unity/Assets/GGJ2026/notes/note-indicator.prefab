@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GGJ2026::GGJ2026.NoteIndicator
   <NoteIndex>k__BackingField: 0
+  <Width>k__BackingField: 100
