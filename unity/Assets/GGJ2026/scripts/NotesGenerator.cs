@@ -8,7 +8,7 @@ namespace GGJ2026
 {
     public class NotesGenerator : MonoBehaviour
     {
-        public UnityEvent<int, float> SpawnNote = new();
+        public UnityEvent<NoteData> SpawnNote = new();
         
         private void Start()
         {
@@ -20,15 +20,15 @@ namespace GGJ2026
                 var absoluteBeat = note.Bar * NoteConstants.BeatsPerMeasure + note.Beat;
                 var time = absoluteBeat / (script.BeatsPerMinute / 60);
 
-                StartCoroutine(spawnNote(note.NoteId, note.Duration, (float)time));
+                StartCoroutine(spawnNote(note, (float)time));
             }
         }
         
-        private IEnumerator spawnNote(int id, float duration, float delay)
+        private IEnumerator spawnNote(NoteData noteData, float delay)
         {
             yield return new WaitForSeconds(delay);
 
-            SpawnNote.Invoke(id, duration);
+            SpawnNote.Invoke(noteData);
         }
     }
 }

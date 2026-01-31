@@ -44,11 +44,12 @@ namespace GGJ2026
             }
         }
 
-        public void SpawnNoteFromPool(int noteIndex, float duration)
+        public void SpawnNoteFromPool(NoteData noteData)
         {
-            Assert.IsTrue(noteIndex >= 0);
+            Assert.IsTrue(noteData.NoteId >= 0);
 
-            NoteIndicator noteIndicator = _notePools[noteIndex].TryDequeue(out noteIndicator) ? noteIndicator : instantiateNote(noteIndex);
+            NoteIndicator noteIndicator = _notePools[noteData.NoteId].TryDequeue(out noteIndicator) 
+                ? noteIndicator : instantiateNote(noteData.NoteId);
             noteIndicator.gameObject.SetActive(true);
 
             NoteSpawned.Invoke(noteIndicator!);
