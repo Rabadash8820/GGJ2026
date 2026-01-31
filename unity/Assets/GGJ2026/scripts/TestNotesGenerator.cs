@@ -13,7 +13,7 @@ namespace GGJ2026
         [SerializeField, ListDrawerSettings(ShowFoldout = false, IsReadOnly = true)]
         private string[] _noteInputActionNames = Enumerable.Range(0, NoteConstants.NoteCount).Select(x => $"note{x}").ToArray();
 
-        public UnityEvent<int> SpawnNote = new();
+        public UnityEvent<NoteData> SpawnNote = new();
 
         private void Awake()
         {
@@ -26,8 +26,10 @@ namespace GGJ2026
 
         private void generateNote(int noteIndex)
         {
+            var noteData = new NoteData { Bar = 0, Beat = 0, NoteId = noteIndex, Duration = 1 };
+            
             Debug.Log($"Generating test note of type {noteIndex}...");
-            SpawnNote.Invoke(noteIndex);
+            SpawnNote.Invoke(noteData);
         }
     }
 }
