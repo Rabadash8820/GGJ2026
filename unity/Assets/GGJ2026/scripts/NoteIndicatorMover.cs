@@ -13,6 +13,7 @@ namespace GGJ2026
 
         [SerializeField] private Vector3 _moveDirection = Vector3.left;
         [SerializeField] private float _moveSpeed = 5f;
+        [SerializeField] private float _missedX = -1920f / 2f;
 
         public UnityEvent<NoteIndicator> NoteMissed = new();
 
@@ -22,7 +23,7 @@ namespace GGJ2026
             for (int i = 0; i < _noteIndicators!.Count; i++) {
                 NoteIndicator noteIndicator = _noteIndicators![i];
                 noteIndicator.transform.position += _moveSpeed * deltaTime * _moveDirection;
-                if (noteIndicator.transform.position.x < 0f) {
+                if (noteIndicator.transform.position.x < _missedX) {
                     _noteIndicators[i] = _noteIndicators[^1];
                     _noteIndicators.RemoveAt(_noteIndicators.Count - 1);
                     NoteMissed.Invoke(noteIndicator);
