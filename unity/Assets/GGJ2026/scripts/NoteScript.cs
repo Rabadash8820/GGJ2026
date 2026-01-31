@@ -8,6 +8,7 @@ namespace GGJ2026
     /// </summary>
     public class NoteScript
     {
-        public IOrderedEnumerable<KeyValuePair<int, NoteType>> Notes { get; set; }
+        // TODO: Enforce ordering here. Unfortunately, no PrioriyQueue available.
+        public List<KeyValuePair<float, NoteType>> Notes { get; set; }
     }
 }
