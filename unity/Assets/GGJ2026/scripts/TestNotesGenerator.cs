@@ -11,7 +11,7 @@ namespace GGJ2026
     public class TestNotesGenerator : MonoBehaviour
     {
         [SerializeField, ListDrawerSettings(ShowFoldout = false, IsReadOnly = true)]
-        private string[] _noteInputActionNames = Enumerable.Range(0, NoteConstants.NoteCount).Select(x => $"note{x}").ToArray();
+        private string[] _noteInputActionNames = Enumerable.Range(0, NoteConstants.NoteCount).Select(x => $"test-note{x}").ToArray();
 
         public UnityEvent<NoteData> SpawnNote = new();
 
@@ -20,15 +20,13 @@ namespace GGJ2026
             for (int i = 0; i < NoteConstants.NoteCount; i++) {
                 InputAction action = InputSystem.actions[_noteInputActionNames[i]];
                 int noteIndex = i;  // Don't accidentally capture the iteration var
-                action.performed += ctx => generateNote(noteIndex);
+                action.performed += ctx => generateNote(new NoteData { NoteId = noteIndex });
             }
         }
 
-        private void generateNote(int noteIndex)
+        private void generateNote(NoteData noteData)
         {
-            var noteData = new NoteData { Bar = 0, Beat = 0, NoteId = noteIndex, Duration = 1 };
-            
-            Debug.Log($"Generating test note of type {noteIndex}...");
+            Debug.Log($"Generating test note of type {noteData.NoteId}...");
             SpawnNote.Invoke(noteData);
         }
     }

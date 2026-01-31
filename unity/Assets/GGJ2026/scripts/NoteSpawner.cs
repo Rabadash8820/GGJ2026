@@ -1,5 +1,6 @@
 #nullable enable
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
@@ -14,6 +15,9 @@ namespace GGJ2026
         private readonly Queue<NoteIndicator>[] _notePools =
             Enumerable.Range(0, NoteConstants.NoteCount).Select(x => new Queue<NoteIndicator>()).ToArray();
         private readonly int[] _noteCounts = Enumerable.Repeat(0, NoteConstants.NoteCount).ToArray();
+
+        private readonly List<NoteIndicator> _shownNotes = new();
+        public IReadOnlyList<NoteIndicator> ShownNotes => _shownNotes;
 
         [SerializeField, Min(0f)]
         private int _initialNoteCount = 5;
@@ -44,7 +48,7 @@ namespace GGJ2026
             }
         }
 
-        public void SpawnNoteFromPool(NoteData noteData)
+        public void ShowNoteFromPool(NoteData noteData)
         {
             Assert.IsTrue(noteData.NoteId >= 0);
 
@@ -52,14 +56,17 @@ namespace GGJ2026
                 ? noteIndicator : instantiateNote(noteData.NoteId);
             noteIndicator.gameObject.SetActive(true);
 
+            _shownNotes.Add(noteIndicator);
+
             NoteSpawned.Invoke(noteIndicator!);
         }
 
-        public void ReturnMissedNoteToPool(NoteIndicator noteIndicator)
+        public void ReturnNoteToPool(NoteIndicator noteIndicator)
         {
             noteIndicator.gameObject.SetActive(false);
             noteIndicator.transform.position = _noteStartPositions[noteIndicator.NoteIndex];
 
+            _shownNotes.Remove(noteIndicator);  // Earlier shown notes are earlier in the list, so searching won't take long but removal is stil O(N)...
             _notePools[noteIndicator.NoteIndex].Enqueue(noteIndicator);
         }
 

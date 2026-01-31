@@ -26,6 +26,7 @@ namespace GGJ2026
                 if (noteIndicator.transform.position.x > _missedX) {
                     _noteIndicators[i] = _noteIndicators[^1];
                     _noteIndicators.RemoveAt(_noteIndicators.Count - 1);
+                    Debug.Log($"Missed note of type {noteIndicator.NoteIndex}");
                     NoteMissed.Invoke(noteIndicator);
                 }
             }
