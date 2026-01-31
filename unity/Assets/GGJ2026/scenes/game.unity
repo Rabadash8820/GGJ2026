@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GGJ2026::GGJ2026.NoteIndicatorMover
   _moveDirection: {x: 1, y: 0, z: 0}
-  _moveSpeed: 400
+  _moveSpeed: 685
   _missedX: 860
   NoteMissed:
     m_PersistentCalls:
