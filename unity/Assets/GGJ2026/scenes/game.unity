@@ -416,7 +416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &962678863
 Transform:
   m_ObjectHideFlags: 0
@@ -464,6 +464,65 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &969323761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 969323762}
+  - component: {fileID: 969323763}
+  m_Layer: 0
+  m_Name: notes-generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &969323762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969323761}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091693713}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &969323763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969323761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6863cc7b5dc45984880e5b1f39baf338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GGJ2026::GGJ2026.NotesGenerator
+  SpawnNote:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1481335152}
+        m_TargetAssemblyTypeName: GGJ2026.NotesSpawner, GGJ2026
+        m_MethodName: SpawnNoteFromPool
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1091693712
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +554,7 @@ Transform:
   m_Children:
   - {fileID: 1116594}
   - {fileID: 1481335151}
+  - {fileID: 969323762}
   - {fileID: 962678863}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -684,9 +744,9 @@ MonoBehaviour:
   _noteNameFormat: note-{0}-{1}
   _notePrefabs:
   - {fileID: 7997885217723343744, guid: a470517a77f858945b4d690d37942291, type: 3}
-  - {fileID: 4944130255023941812, guid: 7de1a3c2595abcc47aec87ff313cd004, type: 3}
-  - {fileID: 4184676987673110208, guid: b5e337623eda6db4ea3fd5ba088c7474, type: 3}
-  - {fileID: 5012194157343611660, guid: 390b69638f4188540bf103fc5dac5bf8, type: 3}
+  - {fileID: 4944130255023941812, guid: 131b1af4aa7fa3745a8c5af82d1186fd, type: 3}
+  - {fileID: 4184676987673110208, guid: 7de1a3c2595abcc47aec87ff313cd004, type: 3}
+  - {fileID: 5012194157343611660, guid: b5e337623eda6db4ea3fd5ba088c7474, type: 3}
   _noteStartPositions:
   - {x: 870, y: 440}
   - {x: 870, y: 170}

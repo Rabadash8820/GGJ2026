@@ -8,7 +8,7 @@ namespace GGJ2026
     /// </summary>
     public class MusicScript
     {
-        public float BeatsPerMinute { get; set; }
+        public decimal BeatsPerMinute { get; set; }
         
         // TODO: Enforce ordering here. Unfortunately, no PrioriyQueue available.
         public List<NoteData> Notes { get; set; } = new();
