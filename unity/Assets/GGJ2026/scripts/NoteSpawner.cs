@@ -13,11 +13,11 @@ namespace GGJ2026
     public class NotesSpawner : MonoBehaviour
     {
         private readonly Queue<NoteIndicator>[] _notePools =
-            Enumerable.Range(0, NoteConstants.NoteCount).Select(x => new Queue<NoteIndicator>()).ToArray();
+            Enumerable.Range(0, Constants.NoteCount).Select(x => new Queue<NoteIndicator>()).ToArray();
         private readonly Queue<NoteIndicator>[] _noteHeldPools = 
-            Enumerable.Range(0, NoteConstants.NoteCount).Select(x => new Queue<NoteIndicator>()).ToArray();
+            Enumerable.Range(0, Constants.NoteCount).Select(x => new Queue<NoteIndicator>()).ToArray();
 
-        private readonly int[] _noteCounts = Enumerable.Repeat(0, NoteConstants.NoteCount).ToArray();
+        private readonly int[] _noteCounts = Enumerable.Repeat(0, Constants.NoteCount).ToArray();
 
         private readonly List<NoteIndicator> _shownNotes = new();
         public IReadOnlyList<NoteIndicator> ShownNotes => _shownNotes;
@@ -35,22 +35,22 @@ namespace GGJ2026
         private string _noteHeldNameFormat = "note-{0}-{1}-held";
 
         [SerializeField, ListDrawerSettings(ShowFoldout = false, IsReadOnly = true)]
-        private GameObject?[] _notePrefabs = new GameObject[NoteConstants.NoteCount];
+        private GameObject?[] _notePrefabs = new GameObject[Constants.NoteCount];
 
         [SerializeField, ListDrawerSettings(ShowFoldout = false, IsReadOnly = true)]
-        private GameObject?[] _noteHeldPrefabs = new GameObject[NoteConstants.NoteCount];
+        private GameObject?[] _noteHeldPrefabs = new GameObject[Constants.NoteCount];
 
         [SerializeField, ListDrawerSettings(ShowFoldout = false, IsReadOnly = true), Min(0f)]
         private Vector2[] _noteStartPositions = Enumerable
-            .Range(0, NoteConstants.NoteCount)
-            .Select(x => new Vector2(-1920f / 2f, 1080f * ((float)x / NoteConstants.NoteCount - 0.5f)))
+            .Range(0, Constants.NoteCount)
+            .Select(x => new Vector2(-1920f / 2f, 1080f * ((float)x / Constants.NoteCount - 0.5f)))
             .ToArray();
 
         public UnityEvent<NoteIndicator> NoteSpawned = new();
 
         public void SpawnInitialNotes()
         {
-            for (int n = 0; n < NoteConstants.NoteCount; n++) {
+            for (int n = 0; n < Constants.NoteCount; n++) {
                 Debug.Log($"Spawning {_initialNoteCount} initial notes of type {n}...");
                 for (int i = 0; i < _initialNoteCount; i++)
                 {
@@ -95,10 +95,10 @@ namespace GGJ2026
         {
             Debug.Log($"Spawning note of type {noteIndex}...");
 
-            var nameFormat = held ? _noteHeldNameFormat: _noteNameFormat;
-            var prefabs = held ? _noteHeldPrefabs : _notePrefabs;
+            string nameFormat = held ? _noteHeldNameFormat : _noteNameFormat;
+            GameObject?[] prefabs = held ? _noteHeldPrefabs : _notePrefabs;
 
-            var startPositions = _noteStartPositions[noteIndex];
+            Vector2 startPositions = _noteStartPositions[noteIndex];
             var position3 = new Vector3(startPositions.x, startPositions.y, held ? 0 : 1);
             
             GameObject noteObject = Instantiate(prefabs[noteIndex]!, position3, Quaternion.identity, _notesParent!);

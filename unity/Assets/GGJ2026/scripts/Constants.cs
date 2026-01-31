@@ -1,8 +1,9 @@
 namespace GGJ2026
 {
-    public static class NoteConstants
+    public static class Constants
     {
         public const int BeatsPerMeasure = 4;
         public const int NoteCount = 4;
+        public const int CharacterCount = 2;
     }
 }
