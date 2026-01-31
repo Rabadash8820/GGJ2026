@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:GroupBox name="grp-main" style="display: flex;">
+        <ui:Button text="Play" name="btn-play"/>
+        <ui:Button text="Credits" name="btn-credits"/>
+        <ui:Button text="Quit" name="btn-quit"/>
+    </ui:GroupBox>
+    <ui:GroupBox name="grp-credits" style="display: none;">
+        <ui:Label text="CREDITS" name="hdr-credits" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 28px;"/>
+        <ui:ScrollView name="scroll-credits" style="height: 250px;">
+            <ui:Label text="&lt;b&gt;Game/UI Design&lt;/b&gt;&#10;Chloe Clark&#10;&#10;&lt;b&gt;Programmers&lt;/b&gt;&#10;Sean Dunlap&#10;Dan Vicarel&#10;&#10;&lt;b&gt;Unity Engineers&lt;/b&gt;&#10;Sean Dunlap&#10;Dan Vicarel&#10;&#10;&lt;b&gt;Character Art&lt;/b&gt;&#10;Madison Smith&#10;&#10;&lt;b&gt;Background Art&lt;/b&gt;&#10;Abigail Qintana&#10;&#10;&lt;b&gt;Music &amp; SFX&lt;/b&gt;&#10;Jalon Tyler " name="lbl-credits" style="-unity-text-align: upper-center;"/>
+        </ui:ScrollView>
+        <ui:Button text="Back" name="btn-credits-back"/>
+    </ui:GroupBox>
+</ui:UXML>
