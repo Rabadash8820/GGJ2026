@@ -23,7 +23,7 @@ namespace GGJ2026
             foreach (var note in script.Notes)
             {
                 var absoluteBeat = note.Bar * Constants.BeatsPerMeasure + note.Beat;
-                var time = absoluteBeat / (script.BeatsPerMinute / 60);
+                var time = absoluteBeat / (script.BeatsPerMinute / 60) - Constants.StartupOffset;
 
                 StartCoroutine(spawnNote(note, (float)time));
             }
