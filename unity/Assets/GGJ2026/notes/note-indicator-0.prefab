@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3758515221055306629
+--- !u!1001 &2258620714608755465
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 20310567075384904, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.77189
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 20310567075384904, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.57092
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 20310567075384904, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48,21 +48,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2746536438338791220, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
-      propertyPath: m_Color.b
+    - target: {fileID: 1080751637323284446, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
+      propertyPath: <NoteIndex>k__BackingField
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2746536438338791220, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
-      propertyPath: m_Color.g
-      value: 1
+      propertyPath: m_Color.b
+      value: 0.05479765
       objectReference: {fileID: 0}
     - target: {fileID: 2746536438338791220, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9933696
+      propertyPath: m_Color.g
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8189243597567516809, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
       propertyPath: m_Name
-      value: note-indicator-4 Variant
+      value: note-indicator-0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

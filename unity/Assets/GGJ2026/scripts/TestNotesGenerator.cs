@@ -20,11 +20,14 @@ namespace GGJ2026
             for (int i = 0; i < NoteConstants.NoteCount; i++) {
                 InputAction action = InputSystem.actions[_noteInputActionNames[i]];
                 int noteIndex = i;  // Don't accidentally capture the iteration var
-                action.performed += ctx => {
-                    Debug.Log($"Generating test note of type {noteIndex}...");
-                    SpawnNote.Invoke(noteIndex);
-                };
+                action.performed += ctx => generateNote(noteIndex);
             }
+        }
+
+        private void generateNote(int noteIndex)
+        {
+            Debug.Log($"Generating test note of type {noteIndex}...");
+            SpawnNote.Invoke(noteIndex);
         }
     }
 }

@@ -5,19 +5,21 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 namespace GGJ2026
 {
     public class NotesSpawner : MonoBehaviour
     {
-        private readonly Queue<Transform>[] _notePools = Enumerable.Range(0, NoteConstants.NoteCount).Select(x => new Queue<Transform>()).ToArray();
+        private readonly Queue<NoteIndicator>[] _notePools =
+            Enumerable.Range(0, NoteConstants.NoteCount).Select(x => new Queue<NoteIndicator>()).ToArray();
         private readonly int[] _noteCounts = Enumerable.Repeat(0, NoteConstants.NoteCount).ToArray();
 
         [SerializeField, Min(0f)]
         private int _initialNoteCount = 5;
 
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
-        private Transform _notesParent;
+        private Transform? _notesParent;
 
         [SerializeField]
         private string _noteNameFormat = "note-{0}-{1}";
@@ -26,8 +28,12 @@ namespace GGJ2026
         private GameObject?[] _notePrefabs = new GameObject[NoteConstants.NoteCount];
 
         [SerializeField, ListDrawerSettings(ShowFoldout = false, IsReadOnly = true), Min(0f)]
-        private Vector2[] _noteStartPositions =
-            Enumerable.Range(0, NoteConstants.NoteCount).Select(x => new Vector2(1920f, 1080f / NoteConstants.NoteCount * x)).ToArray();
+        private Vector2[] _noteStartPositions = Enumerable
+            .Range(0, NoteConstants.NoteCount)
+            .Select(x => new Vector2(1920f / 2f, 1080f * ((float)x / NoteConstants.NoteCount - 0.5f)))
+            .ToArray();
+
+        public UnityEvent<NoteIndicator> NoteSpawned = new();
 
         public void SpawnInitialNotes()
         {
@@ -42,21 +48,34 @@ namespace GGJ2026
         {
             Assert.IsTrue(noteIndex >= 0);
 
-            Transform noteTrans = _notePools[noteIndex].TryDequeue(out noteTrans) ? noteTrans : instantiateNote(noteIndex);
-            noteTrans.gameObject.SetActive(true);
+            NoteIndicator noteIndicator = _notePools[noteIndex].TryDequeue(out noteIndicator) ? noteIndicator : instantiateNote(noteIndex);
+            noteIndicator.gameObject.SetActive(true);
+
+            NoteSpawned.Invoke(noteIndicator!);
         }
 
-        private Transform instantiateNote(int noteIndex)
+        public void ReturnMissedNoteToPool(NoteIndicator noteIndicator)
+        {
+            noteIndicator.gameObject.SetActive(false);
+            noteIndicator.transform.position = _noteStartPositions[noteIndicator.NoteIndex];
+
+            _notePools[noteIndicator.NoteIndex].Enqueue(noteIndicator);
+        }
+
+        private NoteIndicator instantiateNote(int noteIndex)
         {
             Debug.Log($"Spawning note of type {noteIndex}...");
 
-            GameObject noteObject = Instantiate(_notePrefabs[noteIndex]!, _noteStartPositions[noteIndex], Quaternion.identity, _notesParent);
+            GameObject noteObject = Instantiate(_notePrefabs[noteIndex]!, _noteStartPositions[noteIndex], Quaternion.identity, _notesParent!);
+            NoteIndicator noteIndicator = noteObject.GetComponentInChildren<NoteIndicator>();
+            Assert.IsTrue(noteIndicator != null);
+
             noteObject.name = string.Format(_noteNameFormat, noteIndex, _noteCounts[noteIndex]);
             noteObject.SetActive(false);
 
             ++_noteCounts[noteIndex];
 
-            return noteObject.transform;
+            return noteIndicator!;
         }
     }
 }

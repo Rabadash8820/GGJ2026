@@ -9,6 +9,6 @@ namespace GGJ2026
     public class NoteScript
     {
         // TODO: Enforce ordering here. Unfortunately, no PrioriyQueue available.
-        public List<KeyValuePair<float, int>> Notes { get; set; }
+        public List<KeyValuePair<float, int>> Notes { get; set; } = new List<KeyValuePair<float, int>>();
     }
 }
