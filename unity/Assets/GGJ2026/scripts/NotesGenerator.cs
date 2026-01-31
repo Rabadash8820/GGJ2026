@@ -1,5 +1,6 @@
 #nullable enable
 
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,10 +12,12 @@ namespace GGJ2026
         public UnityEvent<NoteData> SpawnNote = new();
         public UnityEvent StartMusic = new();
         
+        [SerializeField]
+        public TextAsset _textAsset;
+        
         private void Start()
         {
-            var asset = "Assets/GGJ2026/test-song-data.json";
-            var script = FileParser.Parse(asset);
+            var script = FileParser.Parse(_textAsset.text);
             
             StartMusic.Invoke();
             foreach (var note in script.Notes)
