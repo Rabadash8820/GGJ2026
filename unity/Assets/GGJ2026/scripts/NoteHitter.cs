@@ -19,6 +19,7 @@ namespace GGJ2026
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private SpriteRenderer? _hitBoxSpriteRenderer;
 
+        [SerializeField] private UnityEvent<int> _hitAttempted = new();
         [SerializeField] private UnityEvent<NoteIndicator> _noteHit = new();
         [SerializeField] private UnityEvent<int> _noteWrong = new();
 
@@ -34,6 +35,7 @@ namespace GGJ2026
         private void tryHitNote(int noteIndex)
         {
             Debug.Log($"Hitting note of type {noteIndex}...");
+            _hitAttempted.Invoke(noteIndex);
 
             foreach (NoteIndicator noteIndicator in _noteSpawner!.ShownNotes) {
                 if (noteIndicator.NoteIndex == noteIndex
