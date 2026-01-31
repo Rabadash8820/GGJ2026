@@ -112,7 +112,7 @@
     },
     "com.unity.ext.nunit": {
       "version": "2.0.5",
-      "depth": 2,
+      "depth": 1,
       "source": "builtin",
       "dependencies": {}
     },
@@ -125,6 +125,15 @@
         "org.nuget.microsoft.extensions.logging.abstractions": "2.0.0"
       },
       "hash": "9ea19f9d330a9e816f31d78acd619ec3e63bde43"
+    },
+    "com.unity.ide.rider": {
+      "version": "3.0.39",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ext.nunit": "1.0.6"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
       "version": "2.0.26",
