@@ -1,5 +1,8 @@
+using System;
+
 namespace GGJ2026
 {
+    [Serializable]
     public class NoteData
     {
         public int Bar { get; set; }

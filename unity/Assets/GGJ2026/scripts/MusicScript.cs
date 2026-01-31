@@ -1,16 +1,12 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace GGJ2026
 {
-    /// <summary>
-    /// 
-    /// </summary>
+    [Serializable]
     public class MusicScript
     {
         public decimal BeatsPerMinute { get; set; }
-        
-        // TODO: Enforce ordering here. Unfortunately, no PrioriyQueue available.
         public List<NoteData> Notes { get; set; } = new();
     }
 }

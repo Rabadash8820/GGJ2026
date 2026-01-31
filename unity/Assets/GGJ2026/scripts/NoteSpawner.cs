@@ -30,7 +30,7 @@ namespace GGJ2026
         [SerializeField, ListDrawerSettings(ShowFoldout = false, IsReadOnly = true), Min(0f)]
         private Vector2[] _noteStartPositions = Enumerable
             .Range(0, NoteConstants.NoteCount)
-            .Select(x => new Vector2(1920f / 2f, 1080f * ((float)x / NoteConstants.NoteCount - 0.5f)))
+            .Select(x => new Vector2(-1920f / 2f, 1080f * ((float)x / NoteConstants.NoteCount - 0.5f)))
             .ToArray();
 
         public UnityEvent<NoteIndicator> NoteSpawned = new();
@@ -44,7 +44,7 @@ namespace GGJ2026
             }
         }
 
-        public void SpawnNoteFromPool(int noteIndex)
+        public void SpawnNoteFromPool(int noteIndex, float duration)
         {
             Assert.IsTrue(noteIndex >= 0);
 
