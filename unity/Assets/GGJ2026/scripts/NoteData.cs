@@ -11,7 +11,7 @@ namespace GGJ2026
         /// <summary>
         /// Duration in beats
         /// </summary>
-        public int Duration { get; set; }
+        public decimal Duration { get; set; }
         
         public int NoteId { get; set; }
     }
