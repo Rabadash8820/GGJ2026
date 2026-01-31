@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3224094721485221857}
   - component: {fileID: 6563441159813520342}
   - component: {fileID: 897613105278511509}
+  - component: {fileID: 1170576315190484944}
   m_Layer: 0
   m_Name: animated-image
   m_TagString: Untagged
@@ -114,6 +115,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1170576315190484944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490533279607895508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 554421564, guid: 060ff4596bd93044693a70cc6d313304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityUtil.dll::UnityUtil.AnimatorStateRestarter
 --- !u!1 &7672701256692312683
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,6 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3759708185546135684}
+  - component: {fileID: 76438349659634355}
   m_Layer: 0
   m_Name: character-base
   m_TagString: Untagged
@@ -146,3 +160,18 @@ Transform:
   - {fileID: 3224094721485221857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &76438349659634355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672701256692312683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f12e9734e5d44344925071b1986bc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GGJ2026::GGJ2026.Character
+  <MistakeAnimStateName>k__BackingField: mistake
+  <Animator>k__BackingField: {fileID: 897613105278511509}
+  <AnimatorStateRestarter>k__BackingField: {fileID: 1170576315190484944}

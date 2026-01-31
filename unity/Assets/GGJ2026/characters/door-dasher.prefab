@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3493164900288659656
+--- !u!1001 &2716496519191822489
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 76438349659634355, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
       propertyPath: MistakeAnimStateName
-      value: old-lady-mistake
+      value: door-dasher-mistake
       objectReference: {fileID: 0}
     - target: {fileID: 76438349659634355, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
       propertyPath: <MistakeAnimStateName>k__BackingField
-      value: old-lady-mistake
+      value: door-dasher-mistake
       objectReference: {fileID: 0}
     - target: {fileID: 3759708185546135684, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -250
+      value: -450
       objectReference: {fileID: 0}
     - target: {fileID: 3759708185546135684, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -300
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3759708185546135684, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -39,30 +39,14 @@ PrefabInstance:
     - target: {fileID: 6563441159813520342, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6598622667072425665, guid: 950eed60a408a2b4aae5caab9ab7396b, type: 3}
+      objectReference: {fileID: 8803155078533642300, guid: 247c5e94a467f4645a992b17f9d228aa, type: 3}
     - target: {fileID: 6563441159813520342, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7672701256692312683, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
       propertyPath: m_Name
-      value: old-lady
-      objectReference: {fileID: 0}
-    - target: {fileID: 8581040895477776961, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
-      propertyPath: m_Size.x
-      value: 5.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 8581040895477776961, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
-      propertyPath: m_Size.y
-      value: 8.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8581040895477776961, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 6598622667072425665, guid: 950eed60a408a2b4aae5caab9ab7396b, type: 3}
-    - target: {fileID: 8581040895477776961, guid: cfce3f260f41ac24285d4738300cda12, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: door-dasher
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
