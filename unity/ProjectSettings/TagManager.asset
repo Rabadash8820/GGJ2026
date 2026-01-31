@@ -50,5 +50,8 @@ TagManager:
   - name: characters
     uniqueID: 1377295495
     locked: 0
+  - name: mask-overlay
+    uniqueID: 3791546047
+    locked: 0
   m_RenderingLayers:
   - Default
