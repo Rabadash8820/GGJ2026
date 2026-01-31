@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,23 +9,35 @@ namespace GGJ2026
     {
         public UnityEvent<NoteType> SpawnNote { get; set; }
 
-        private NoteScript _noteScript = null;
+        private NoteScript? _noteScript;
         private float _scriptStart;
         
         void Start()
         {
             _scriptStart = Time.time;
-            _noteScript = new NoteScript();
+            
+            //initialize with test values
+            var notes = new List<KeyValuePair<float, NoteType>>()
+            {
+                new(1, NoteType.Note1),
+                new(2, NoteType.Note2),
+                new(3, NoteType.Note3),
+                new(4, NoteType.Note4)
+            };
+            
+            _noteScript = new NoteScript { Notes = notes };
         }
         
         // Update is called once per frame
         void Update()
         {
             var time = Time.time - _scriptStart;
+            if (_noteScript is null) { return; }
             if (_noteScript.Notes.Any() == false) { return; }
-            while (_noteScript.Notes.First().Key < time)
+            while (_noteScript.Notes.First().Key <= time)
             {
                 SpawnNote.Invoke(_noteScript.Notes.First().Value);
+                _noteScript.Notes.RemoveAt(0);
             }
         }
     }
