@@ -9,12 +9,14 @@ namespace GGJ2026
     public class NotesGenerator : MonoBehaviour
     {
         public UnityEvent<NoteData> SpawnNote = new();
+        public UnityEvent StartMusic = new();
         
         private void Start()
         {
             var asset = "Assets/GGJ2026/test-song-data.json";
             var script = FileParser.Parse(asset);
-
+            
+            StartMusic.Invoke();
             foreach (var note in script.Notes)
             {
                 var absoluteBeat = note.Bar * Constants.BeatsPerMeasure + note.Beat;
