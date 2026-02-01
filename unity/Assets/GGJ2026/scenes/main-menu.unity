@@ -308,7 +308,7 @@ MonoBehaviour:
 
     Chloe Clark
 
-    
+
 
     <b>Programmers</b>
 
@@ -317,7 +317,7 @@ MonoBehaviour:
 
     Dan Vicarel
 
-    
+
 
     <b>Unity Engineers</b>
 
@@ -326,20 +326,20 @@ MonoBehaviour:
     Dan
     Vicarel
 
-    
+
 
     <b>Character Art</b>
 
     Madison Smith
 
-    
 
-    <b>Background
-    Art</b>
 
-    Abigail Qintana
+    <b>Background Art</b>
 
-    
+    Abigail
+    Qintana
+
+
 
     <b>Music & SFX</b>
 
@@ -1083,7 +1083,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &942087973
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1541,7 +1541,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1718188928
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1620,7 +1620,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &1739141432
 CanvasRenderer:
   m_ObjectHideFlags: 0
