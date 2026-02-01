@@ -6,5 +6,9 @@ namespace GGJ2026
     {
         [field: SerializeField] public int NoteIndex { get; private set; }
         [field: SerializeField] public float Width { get; private set; }
+        
+        public bool RequiresHold { get; set; }
+        
+        public NoteState State { get; set; } = NoteState.Inactive;
     }
 }

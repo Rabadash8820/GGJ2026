@@ -22,6 +22,7 @@ namespace GGJ2026
         [SerializeField] private UnityEvent<int> _hitAttempted = new();
         [SerializeField] private UnityEvent<NoteIndicator> _noteHit = new();
         [SerializeField] private UnityEvent<int> _noteWrong = new();
+        [SerializeField] private UnityEvent<NoteIndicator> _noteReleasedEarly = new();
 
         private void Awake()
         {
@@ -29,6 +30,7 @@ namespace GGJ2026
                 InputAction action = InputSystem.actions[_noteInputActionNames[i]];
                 int noteIndex = i;  // Don't accidentally capture the iteration var
                 action.performed += ctx => tryHitNote(noteIndex);
+                action.canceled += ctx => releaseHoldNote(noteIndex);
             }
         }
 
@@ -37,10 +39,19 @@ namespace GGJ2026
             Debug.Log($"Hitting note of type {noteIndex}...");
             _hitAttempted.Invoke(noteIndex);
 
-            foreach (NoteIndicator noteIndicator in _noteSpawner!.ShownNotes) {
+            foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
+            {
                 if (noteIndicator.NoteIndex == noteIndex
-                    && noteIndicator.transform.position.x + noteIndicator.Width >= _hitBoxSpriteRenderer!.transform.position.x - _hitBoxSpriteRenderer.transform.localScale.x / 2f
-                ) {
+                    && noteIndicator.State == NoteState.Active
+                    && inHitRange(noteIndicator)
+                )
+                {
+                    if (noteIndicator.RequiresHold)
+                    {
+                        noteIndicator.State = NoteState.Held;
+                        return;
+                    }
+
                     Debug.Log($"Successfully hit note of type {noteIndex}");
                     _noteHit.Invoke(noteIndicator);
                     return;
@@ -49,6 +60,39 @@ namespace GGJ2026
 
             Debug.Log($"Hit wrong note of type {noteIndex}");
             _noteWrong.Invoke(noteIndex);
+        }
+
+        private bool inHitRange(NoteIndicator note)
+        {
+            return note.transform.position.x + note.Width >=
+                _hitBoxSpriteRenderer!.transform.position.x - _hitBoxSpriteRenderer.transform.localScale.x / 2f;
+        }
+
+        private void releaseHoldNote(int noteIndex)
+        {
+            foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
+            {
+                if (noteIndicator.NoteIndex == noteIndex
+                    && noteIndicator.State == NoteState.Held) 
+                {
+                    if (inReleaseRange(noteIndicator))
+                    {
+                        Debug.Log($"Successfully held note of type {noteIndex}");
+                        _noteHit.Invoke(noteIndicator);
+                        return;   
+                    }
+                    
+                    noteIndicator.State = NoteState.Missed;
+                    _noteReleasedEarly.Invoke(noteIndicator);
+                    return;
+                }
+            }
+        }
+
+        private bool inReleaseRange(NoteIndicator note)
+        {
+            return note.transform.position.x - note.Width / 2 >=
+                   _hitBoxSpriteRenderer!.transform.position.x - _hitBoxSpriteRenderer.transform.localScale.x / 2f;
         }
     }
 }
