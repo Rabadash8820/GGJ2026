@@ -4,6 +4,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace GGJ2026
 {
@@ -16,7 +17,7 @@ namespace GGJ2026
         private NotesGenerator? _notesGenerator;
 
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
-        private SpriteRenderer? _faceSpriteRenderer;
+        private Image? _faceSpriteImage;
 
         [SerializeField] private Sprite[] _faceSprites = Array.Empty<Sprite>();
 
@@ -31,7 +32,7 @@ namespace GGJ2026
             float accuracy = (float)_noteHitter!.NotesHitCount / _notesGenerator!.GeneratedNoteCount;
 
             int faceSpriteIndex = (int)(accuracy * _faceSprites.Length);
-            _faceSpriteRenderer!.sprite = _faceSprites[faceSpriteIndex];
+            _faceSpriteImage!.sprite = _faceSprites[faceSpriteIndex];
 
             if (accuracy < _minAccuracy && _notesGenerator!.GeneratedNoteCount >= _minNotesBeforeTooLow) {
                 Debug.Log($"Accuracy ({accuracy:P}) fell below the min ({_minAccuracy:P})");
