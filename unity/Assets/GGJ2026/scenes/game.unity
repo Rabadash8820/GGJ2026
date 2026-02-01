@@ -573,7 +573,7 @@ MonoBehaviour:
         m_CallState: 2
   _grpPausedName: grp-paused
   _btnResumeName: btn-resume
-  _btnCreditsName: btn-credits
+  _btnMainMenuName: btn-main-menu
   _btnQuitName: btn-quit
 --- !u!1 &250394666
 GameObject:
@@ -1768,8 +1768,8 @@ MonoBehaviour:
   _notePrefabs:
   - {fileID: 7997885217723343744, guid: a470517a77f858945b4d690d37942291, type: 3}
   - {fileID: 4944130255023941812, guid: 131b1af4aa7fa3745a8c5af82d1186fd, type: 3}
-  - {fileID: 4184676987673110208, guid: 7de1a3c2595abcc47aec87ff313cd004, type: 3}
-  - {fileID: 5012194157343611660, guid: b5e337623eda6db4ea3fd5ba088c7474, type: 3}
+  - {fileID: 4184676987673110208, guid: b5e337623eda6db4ea3fd5ba088c7474, type: 3}
+  - {fileID: 5012194157343611660, guid: 390b69638f4188540bf103fc5dac5bf8, type: 3}
   _noteHeldPrefabs:
   - {fileID: 7997885217723343744, guid: d52e40b0d5875ed4db685969c8d37f10, type: 3}
   - {fileID: 4944130255023941812, guid: 2ab01a5f218e4bc4eb0ec01e0472c1b5, type: 3}
