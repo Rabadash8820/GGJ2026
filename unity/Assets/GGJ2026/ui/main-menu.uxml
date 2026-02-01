@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:GroupBox name="grp-main" style="display: flex;">
-        <ui:Button text="Play" name="btn-play"/>
+        <ui:Button name="btn-play" text="." style="background-image: url(&quot;project://database/Assets/GGJ2026/ui/btn-start.png?fileID=-4736947021416864802&amp;guid=85ff5c6a9b5e34945bbe8301ba5c32af&amp;type=3#btn-start_0&quot;); background-color: rgba(255, 255, 255, 0); -unity-background-scale-mode: scale-to-fit; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;"/>
         <ui:Button text="Credits" name="btn-credits"/>
-        <ui:Button text="Quit" name="btn-quit"/>
+        <ui:Button text="." name="btn-quit" style="background-image: url(&quot;project://database/Assets/GGJ2026/ui/btn-quit.png?fileID=3934043576874358288&amp;guid=d6f6540278008f743a02ae95fcd1c850&amp;type=3#btn-quit_0&quot;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;"/>
     </ui:GroupBox>
     <ui:GroupBox name="grp-credits" style="display: none;">
         <ui:Label text="CREDITS" name="hdr-credits" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 28px;"/>
