@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 950eed60a408a2b4aae5caab9ab7396b
+guid: f3d6fbec4690c7c45af9b778df2eeb00
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6598622667072425665
-    second: old-lady-base_0
+      213: 5236618127288063267
+    second: cash-register_0
+  - first:
+      213: 8606725080159383318
+    second: cash-register_1
+  - first:
+      213: -4967689882417027026
+    second: cash-register_2
+  - first:
+      213: 5447802133048110588
+    second: cash-register_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,9 +60,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 2
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -126,23 +135,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: old-lady-base_0
+      name: cash-register_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 544
-        height: 880
+        x: 2477
+        y: 1470
+        width: 57
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ce41bdca54039b50800000000000000
-      internalID: 6598622667072425665
+      spriteID: 325506521743ca840800000000000000
+      internalID: 5236618127288063267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cash-register_1
+      rect:
+        serializedVersion: 2
+        x: 2539
+        y: 1508
+        width: 324
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61f685a2cda317770800000000000000
+      internalID: 8606725080159383318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cash-register_2
+      rect:
+        serializedVersion: 2
+        x: 2863
+        y: 1495
+        width: 70
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e282b343f583f0bb0800000000000000
+      internalID: -4967689882417027026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cash-register_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 3840
+        height: 2160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfda2f22d2b7a9b40800000000000000
+      internalID: 5447802133048110588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cash-register_4
+      rect:
+        serializedVersion: 2
+        x: 2188
+        y: 1444
+        width: 198
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9891763d8aa3b2c4585c0234224be470
+      internalID: 487121198
       vertices: []
       indices: 
       edges: []
@@ -151,7 +248,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 4b3367f7c0953e54d8babf014762eb88
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +258,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      old-lady-base_0: 6598622667072425665
+      cash-register_0: 5236618127288063267
+      cash-register_1: 8606725080159383318
+      cash-register_2: -4967689882417027026
+      cash-register_3: 5447802133048110588
+      cash-register_4: 487121198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
