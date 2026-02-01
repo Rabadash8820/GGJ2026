@@ -889,7 +889,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1881015235}
         m_TargetAssemblyTypeName: GGJ2026.HudController, GGJ2026
-        m_MethodName: HitNote
+        m_MethodName: UpdateAccuracyLabel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1355,6 +1355,113 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1899005936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &846313670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846313673}
+  - component: {fileID: 846313672}
+  - component: {fileID: 846313674}
+  m_Layer: 5
+  m_Name: game-over-menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &846313672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846313670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 410d74e64e4b4f74a993d94de6bb21f6, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: aa52a8f6ef8b8c240a10a1f2a59c1546, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!4 &846313673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846313670}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &846313674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846313670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2050964c1d20fa43b1b5ba12c699e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GGJ2026::GGJ2026.GameOverMenuController
+  _uiDocument: {fileID: 846313672}
+  _noteHitter: {fileID: 485357872}
+  _notesGenerator: {fileID: 969323763}
+  _grpGameOverName: grp-game-over
+  _lblNotesHitName: lbl-notes-hit
+  _lblNotesShownName: lbl-notes-shown
+  _lblAccuracyName: lbl-accuracy
+  _btnMainMenuName: btn-main-menu
+  _btnQuitName: btn-quit
+  <GoingToMainMenu>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: e5e01cec462857f499b52513008c9b5e, type: 2}
+        m_TargetAssemblyTypeName: UnityUtil.SceneLoadManager, UnityUtil
+        m_MethodName: LoadSingleSceneAsync
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: main-menu
+          m_BoolArgument: 0
+        m_CallState: 2
+  <Quitting>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 18106a0f0bd439048bdfc08acb7f61d4, type: 2}
+        m_TargetAssemblyTypeName: UnityUtil.ApplicationQuitter, rabadash8820.unitydsf
+        m_MethodName: Quit
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &962678862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,6 +1577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GGJ2026::GGJ2026.NotesGenerator
   <NoteVisibilityDuration>k__BackingField: 0.5
   _noteStartOffset: 3.5
+  _afterMusicDelaySeconds: 5
   _spawnNote:
     m_PersistentCalls:
       m_Calls:
@@ -1487,7 +1595,31 @@ MonoBehaviour:
         m_CallState: 2
   _endMusic:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 846313674}
+        m_TargetAssemblyTypeName: GGJ2026.GameOverMenuController, GGJ2026
+        m_MethodName: ShowMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1881015233}
+        m_TargetAssemblyTypeName: UnityEngine.UIElements.UIDocument, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _textAsset: {fileID: 4900000, guid: 344693c569995b241ab9c457a1c2bffb, type: 3}
 --- !u!222 &969323764
 CanvasRenderer:
@@ -1851,7 +1983,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1881015235}
         m_TargetAssemblyTypeName: GGJ2026.HudController, GGJ2026
-        m_MethodName: IncrementShownNoteCount
+        m_MethodName: UpdateAccuracyLabel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2022,7 +2154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GGJ2026::GGJ2026.HudController
   _uiDocument: {fileID: 1881015233}
-  <ShownNoteCount>k__BackingField: 0
+  _noteHitter: {fileID: 485357872}
+  _notesGenerator: {fileID: 969323763}
   _lblAccuracyName: lbl-accuracy
   _lblAccuracyFormatString: '{0} / {1}'
 --- !u!1 &1895845767
@@ -2452,5 +2585,6 @@ SceneRoots:
   - {fileID: 1868671097}
   - {fileID: 1881015234}
   - {fileID: 222097345}
+  - {fileID: 846313673}
   - {fileID: 1190938495}
   - {fileID: 1333500057}

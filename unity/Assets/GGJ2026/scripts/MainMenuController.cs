@@ -38,8 +38,8 @@ namespace GGJ2026
             _grpCredits = _uiDocument!.rootVisualElement.Query<GroupBox>(_grpCreditsName).First();
             _btnCreditsBack = _uiDocument!.rootVisualElement.Query<Button>(_btnCreditsBackName).First();
 
-            _btnPlay.clicked += () => Playing.Invoke();
-            _btnQuit.clicked += () => Quitting.Invoke();
+            _btnPlay.clicked += Playing.Invoke;
+            _btnQuit.clicked += Quitting.Invoke;
             _btnCredits.clicked += () => {
                 _grpMain.style.display = DisplayStyle.None;
                 _grpCredits.style.display = DisplayStyle.Flex;

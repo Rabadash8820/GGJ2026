@@ -24,6 +24,8 @@ namespace GGJ2026
         [SerializeField] private UnityEvent<int> _noteWrong = new();
         [SerializeField] private UnityEvent<NoteIndicator> _noteReleasedEarly = new();
 
+        public int NotesHitCount { get; private set; }
+
         private void Awake()
         {
             for (int i = 0; i < Constants.NoteCount; i++) {
@@ -53,6 +55,7 @@ namespace GGJ2026
                     }
 
                     Debug.Log($"Successfully hit note of type {noteIndex}");
+                    ++NotesHitCount;
                     _noteHit.Invoke(noteIndicator);
                     return;
                 }
