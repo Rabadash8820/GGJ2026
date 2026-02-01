@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement name="grp-paused" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.5); display: none;">
         <ui:GroupBox name="menu">
+            <ui:Label text="PAUSED" name="hdr" enable-rich-text="false" style="-unity-text-align: upper-center; font-size: 28px; color: rgb(255, 255, 255); -unity-font-style: bold;"/>
             <ui:Button text="Resume" name="btn-resume"/>
             <ui:Button text="Main Menu" name="btn-main-menu"/>
             <ui:Button text="Quit" name="btn-quit"/>
