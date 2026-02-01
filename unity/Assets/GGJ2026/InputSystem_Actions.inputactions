@@ -77,6 +77,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "spawn-old-lady",
+                    "type": "Button",
+                    "id": "002448e8-a5be-4e64-ac72-94707aab842f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "spawn-door-dasher",
+                    "type": "Button",
+                    "id": "6acb2a0a-9dd6-4205-af0a-f7c46cb27a34",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "spawn-businessman",
+                    "type": "Button",
+                    "id": "229b2b55-4174-4f0e-9423-cf8bb1669919",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -209,6 +236,39 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "test-note3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8e4e469-d912-4af4-bdf3-01b1e69f8da3",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "spawn-old-lady",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7d317ac-cca4-4d14-bede-19bfa3446bf9",
+                    "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "spawn-door-dasher",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99991811-af09-4836-9aed-681de7d3f214",
+                    "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "spawn-businessman",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
