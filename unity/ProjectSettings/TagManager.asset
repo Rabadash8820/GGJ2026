@@ -53,6 +53,9 @@ TagManager:
   - name: mask-overlay
     uniqueID: 3791546047
     locked: 0
+  - name: hud
+    uniqueID: 614229401
+    locked: 0
   - name: notes
     uniqueID: 1155409669
     locked: 0
