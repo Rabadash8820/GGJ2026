@@ -13,6 +13,8 @@ namespace GGJ2026
         private Label? _lblNotesHit;
         private Label? _lblNotesShown;
         private Label? _lblAccuracy;
+        private Label? _lblWin;
+        private Label? _lblLose;
 
         private string _lblNotesHitFormatString = "";
         private string _lblNotesShownFormatString = "";
@@ -30,6 +32,8 @@ namespace GGJ2026
         [Header("Element Names")]
 
         [SerializeField] private string _grpGameOverName = "grp-game-over";
+        [SerializeField] private string _lblWinName = "lbl-win";
+        [SerializeField] private string _lblLoseName = "lbl-lose";
         [SerializeField] private string _lblNotesHitName = "lbl-notes-hit";
         [SerializeField] private string _lblNotesShownName = "lbl-notes-shown";
         [SerializeField] private string _lblAccuracyName = "lbl-accuracy";
@@ -47,6 +51,8 @@ namespace GGJ2026
             _lblNotesHit = _uiDocument!.rootVisualElement.Query<Label>(_lblNotesHitName).First();
             _lblNotesShown = _uiDocument!.rootVisualElement.Query<Label>(_lblNotesShownName).First();
             _lblAccuracy = _uiDocument!.rootVisualElement.Query<Label>(_lblAccuracyName).First();
+            _lblWin = _uiDocument!.rootVisualElement.Query<Label>(_lblWinName).First();
+            _lblLose = _uiDocument!.rootVisualElement.Query<Label>(_lblLoseName).First();
 
             _lblNotesHitFormatString = _lblNotesHit.text;
             _lblNotesShownFormatString = _lblNotesShown.text;
@@ -60,12 +66,16 @@ namespace GGJ2026
         }
 
         [Button]
-        public void ShowMenu()
+        public void ShowMenu(bool didWin)
         {
             _grpGameOver!.style.display = DisplayStyle.Flex;
+
             _lblNotesHit!.text = string.Format(_lblNotesHitFormatString, _noteHitter!.NotesHitCount);
             _lblNotesShown!.text = string.Format(_lblNotesShownFormatString, _notesGenerator!.GeneratedNoteCount);
             _lblAccuracy!.text = string.Format(_lblAccuracyFormatString, (float)_noteHitter.NotesHitCount / _notesGenerator.GeneratedNoteCount);
+
+            _lblWin!.style.display = didWin ? DisplayStyle.Flex : DisplayStyle.None;
+            _lblLose!.style.display = didWin ? DisplayStyle.None : DisplayStyle.Flex;
         }
     }
 }

@@ -40,9 +40,8 @@ namespace GGJ2026
         {
             float time = Time.timeSinceLevelLoad;
             while (time >= _nextNoteTime) {
-                _spawnNote.Invoke(_musicScript!.Notes[GeneratedNoteCount]);
+                _spawnNote.Invoke(_musicScript!.Notes[GeneratedNoteCount++]);
 
-                ++GeneratedNoteCount;
                 if (GeneratedNoteCount < _musicScript.Notes.Count) {
                     _nextNoteTime = getGenerateNoteTime(_musicScript.Notes[GeneratedNoteCount]);
                 }

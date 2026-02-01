@@ -1,7 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement name="grp-game-over" style="flex-grow: 1; background-color: rgb(0, 0, 0); display: none;">
         <ui:GroupBox name="menu">
-            <ui:Label text="GAME OVER" name="hdr" enable-rich-text="false" style="color: rgb(255, 255, 255); -unity-text-align: upper-center; font-size: 28px; -unity-font-style: bold;"/>
+            <ui:Label text="Way to mask those emotions!" name="hdr-win" enable-rich-text="false" style="color: rgb(255, 255, 255); -unity-text-align: upper-center; font-size: 20px; -unity-font-style: bold;"/>
+            <ui:Label text="Ooft, you gotta mask those emotions!" name="hdr-lose" enable-rich-text="false" style="color: rgb(255, 255, 255); -unity-text-align: upper-center; font-size: 20px; -unity-font-style: bold;"/>
             <ui:Label text="&lt;b&gt;Notes hit:&lt;/b&gt; {0}" name="lbl-notes-hit" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
             <ui:Label text="&lt;b&gt;Notes shown:&lt;/b&gt; {0}" name="lbl-notes-shown" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
             <ui:Label text="&lt;b&gt;Accuracy:&lt;/b&gt; {0:P}" name="lbl-accuracy" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
