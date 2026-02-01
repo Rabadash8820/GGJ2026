@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 950eed60a408a2b4aae5caab9ab7396b
+guid: 999c028001603fc42b61f8af41ee2cf4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6598622667072425665
-    second: old-lady-base_0
+      213: -3326629582822116958
+    second: background-4_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 2
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: old-lady-base_0
+      name: background-4_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 544
-        height: 880
+        width: 3840
+        height: 2160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ce41bdca54039b50800000000000000
-      internalID: 6598622667072425665
+      spriteID: 2a1f498050075d1d0800000000000000
+      internalID: -3326629582822116958
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      old-lady-base_0: 6598622667072425665
+      background-4_0: -3326629582822116958
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
