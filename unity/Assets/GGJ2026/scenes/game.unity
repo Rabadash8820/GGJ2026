@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GGJ2026::GGJ2026.NotesGenerator
   <NoteVisibilityDuration>k__BackingField: 0.5
-  _noteStartOffset: 1.75
+  _noteStartOffset: 0
   _afterMusicDelaySeconds: 5
   _spawnNote:
     m_PersistentCalls:
