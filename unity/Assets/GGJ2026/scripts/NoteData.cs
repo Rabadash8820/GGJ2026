@@ -6,12 +6,12 @@ namespace GGJ2026
     public class NoteData
     {
         public int Bar { get; set; }
-        public decimal Beat { get; set; }
+        public float Beat { get; set; }
         
         /// <summary>
         /// Duration in beats
         /// </summary>
-        public decimal Duration { get; set; }
+        public float Duration { get; set; }
         
         public int NoteId { get; set; }
     }

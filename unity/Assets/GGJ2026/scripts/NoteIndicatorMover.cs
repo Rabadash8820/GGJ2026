@@ -11,18 +11,22 @@ namespace GGJ2026
     {
         private readonly List<NoteIndicator> _noteIndicators = new();
 
-        [SerializeField] private Vector3 _moveDirection = Vector3.right;
-        [SerializeField] private float _moveSpeed = 5f;
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private NotesGenerator? _notesGenerator;
+
+        [Tooltip("Distance over which notes must move within the allowed duration (set on a " + nameof(NotesGenerator) + ").")]
+        [SerializeField] private float _moveDistance = 1920f;
+        [SerializeField] private Vector2 _moveDirection = Vector2.right;
         [SerializeField] private float _missedX = 1920f / 2f;
 
         public UnityEvent<NoteIndicator> NoteMissed = new();
 
         private void Update()
         {
-            float deltaTime = Time.deltaTime;
+            Vector3 delta = _moveDistance / _notesGenerator!.NoteVisibilityDuration * Time.deltaTime * _moveDirection;
             for (int i = 0; i < _noteIndicators!.Count; i++) {
                 NoteIndicator noteIndicator = _noteIndicators![i];
-                noteIndicator.transform.position += _moveSpeed * deltaTime * _moveDirection;
+                noteIndicator.transform.position += delta;
                 if (noteIndicator.transform.position.x - (noteIndicator.transform.localScale.x * 64) > _missedX) {
                     _noteIndicators[i] = _noteIndicators[^1];
                     _noteIndicators.RemoveAt(_noteIndicators.Count - 1);

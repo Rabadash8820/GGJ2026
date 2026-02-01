@@ -1,7 +1,6 @@
 #nullable enable
 
-using System;
-using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,42 +8,58 @@ namespace GGJ2026
 {
     public class NotesGenerator : MonoBehaviour
     {
-        public UnityEvent<NoteData> SpawnNote = new();
-        public UnityEvent StartMusic = new();
-        
-        [SerializeField]
-        public TextAsset _textAsset;
-        
-        private void Start()
+        private int _nextNoteIndex;
+        private float _nextNoteTime;
+        private float _beatsPerSec;
+        private MusicScript? _musicScript;
+
+        [field: Tooltip("Duration, in seconds, for which a note is visible until the player must hit it")]
+        [field: SerializeField] public float NoteVisibilityDuration { get; private set; } = 0.5f;
+
+        [Tooltip("Offset, in seconds, to sync up notes with the start of the actual music audio")]
+        [SerializeField] private float _noteStartOffset = 3f;
+
+        [SerializeField] private UnityEvent<NoteData> _spawnNote = new();
+        [SerializeField] private UnityEvent _endMusic = new();
+
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private TextAsset? _textAsset;
+
+        private void Awake()
         {
-            var script = FileParser.Parse(_textAsset.text);
+            _musicScript = FileParser.Parse(_textAsset!.text);
+            _beatsPerSec = _musicScript.BeatsPerMinute / 60f;
+            _nextNoteTime = getGenerateNoteTime(_musicScript.Notes[0]);
+        }
 
-            var startTime = Time.time;
-            var halfSecond = 0.5f;
-            float SyncDelay() => startTime - Time.time + halfSecond;
-            
-            StartCoroutine(startMusic(SyncDelay()));
-            foreach (var note in script.Notes)
-            {
-                var absoluteBeat = note.Bar * Constants.BeatsPerMeasure + note.Beat;
-                var time = absoluteBeat / (script.BeatsPerMinute / 60) - Constants.StartupOffset;
+        private void Update()
+        {
+            float time = Time.timeSinceLevelLoad;
+            while (time >= _nextNoteTime) {
+                _spawnNote.Invoke(_musicScript!.Notes[_nextNoteIndex]);
 
-                StartCoroutine(spawnNote(note, (float)time + SyncDelay()));
+                ++_nextNoteIndex;
+                if (_nextNoteIndex < _musicScript.Notes.Count) {
+                    _nextNoteTime = getGenerateNoteTime(_musicScript.Notes[_nextNoteIndex]);
+                }
+                else {
+                    Debug.Log("End of music reached");
+                    _nextNoteTime = float.PositiveInfinity;
+                    _endMusic.Invoke();
+                }
             }
         }
 
-        private IEnumerator startMusic(float delay)
+        /// <summary>
+        /// Gets the absolute time when <paramref name="noteData"/> should be generated
+        /// (given by its beat and the delay necessary for it to travel to the player's hitbox).
+        /// </summary>
+        /// <param name="noteData"></param>
+        /// <returns></returns>
+        private float getGenerateNoteTime(NoteData noteData)
         {
-            yield return new WaitForSeconds(delay);
-            
-            StartMusic.Invoke();
-        }
-        
-        private IEnumerator spawnNote(NoteData noteData, float delay)
-        {
-            yield return new WaitForSeconds(delay);
-
-            SpawnNote.Invoke(noteData);
+            float beat = noteData.Bar * Constants.BeatsPerMeasure + noteData.Beat;
+            return beat / _beatsPerSec - _noteStartOffset - NoteVisibilityDuration;
         }
     }
 }

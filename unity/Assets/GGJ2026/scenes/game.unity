@@ -148,16 +148,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2200c91d4f2ba4ca38698be83f157c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GGJ2026::GGJ2026.NoteIndicatorMover
-  _moveDirection: {x: 1, y: 0, z: 0}
-  _moveSpeed: 685
+  _notesGenerator: {fileID: 969323763}
+  _moveDistance: 880
+  _moveDirection: {x: 1, y: 0}
   _missedX: 860
   NoteMissed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1481335152}
-        m_TargetAssemblyTypeName: GGJ2026.NotesSpawner, GGJ2026
-        m_MethodName: ReturnNoteToPool
-        m_Mode: 0
+      - m_Target: {fileID: 250394668}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -166,10 +167,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 250394668}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 527435115}
+        m_TargetAssemblyTypeName: GGJ2026.CharacterSpawner, GGJ2026
+        m_MethodName: ShowCharacterMistakeEffects
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1481335152}
+        m_TargetAssemblyTypeName: GGJ2026.NotesSpawner, GGJ2026
+        m_MethodName: ReturnNoteToPool
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -256,7 +269,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1155409669
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
@@ -422,10 +435,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 176058989}
-  - component: {fileID: 176058990}
   - component: {fileID: 176058991}
   m_Layer: 0
-  m_Name: music-player
+  m_Name: music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,21 +456,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1091693713}
+  m_Father: {fileID: 1228574209}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &176058990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176058988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9819b58ec06c4260be1260bda54ba40c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GGJ2026::GGJ2026.MusicPlayer
-  _audioSource: {fileID: 176058991}
 --- !u!82 &176058991
 AudioSource:
   m_ObjectHideFlags: 0
@@ -915,12 +914,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 527435115}
+        m_TargetAssemblyTypeName: GGJ2026.CharacterSpawner, GGJ2026
+        m_MethodName: ShowCharacterMistakeEffects
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _noteReleasedEarly:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 250394668}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 527435115}
+        m_TargetAssemblyTypeName: GGJ2026.CharacterSpawner, GGJ2026
+        m_MethodName: ShowCharacterMistakeEffects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1183,7 +1206,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -503421249
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 35cc25491bf01114399c5f7de40b35ef, type: 3}
@@ -1444,7 +1467,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6863cc7b5dc45984880e5b1f39baf338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GGJ2026::GGJ2026.NotesGenerator
-  SpawnNote:
+  <NoteVisibilityDuration>k__BackingField: 0.5
+  _noteStartOffset: 3.5
+  _spawnNote:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1481335152}
@@ -1459,7 +1484,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  StartMusic:
+  _endMusic:
     m_PersistentCalls:
       m_Calls: []
   _textAsset: {fileID: 4900000, guid: 344693c569995b241ab9c457a1c2bffb, type: 3}
@@ -1500,7 +1525,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 176058989}
   - {fileID: 1116594}
   - {fileID: 1481335151}
   - {fileID: 527435114}
@@ -1572,6 +1596,7 @@ Transform:
   m_Children:
   - {fileID: 143252483}
   - {fileID: 250394667}
+  - {fileID: 176058989}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1333500056
@@ -1896,65 +1921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f12e9734e5d44344925071b1986bc28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GGJ2026::GGJ2026.Character
---- !u!1 &1803871460
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1803871461}
-  - component: {fileID: 1803871462}
-  m_Layer: 0
-  m_Name: awake-trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1803871461
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803871460}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1803871462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803871460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1187151621, guid: 89e0cc21ccdf0144598f97a3ed77427a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityUtil.Triggers.dll::UnityUtil.Triggers.ComponentLifecycleTrigger
-  Awoken:
-    m_PersistentCalls:
-      m_Calls: []
-  Started:
-    m_PersistentCalls:
-      m_Calls: []
-  Enabled:
-    m_PersistentCalls:
-      m_Calls: []
-  Disabled:
-    m_PersistentCalls:
-      m_Calls: []
-  Destroyed:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1868671096
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,7 +2237,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1155409669
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 08246e37d1295cb4a9af06553f3f1355, type: 3}
@@ -2481,7 +2447,6 @@ SceneRoots:
   - {fileID: 1228574209}
   - {fileID: 703875921}
   - {fileID: 1091693713}
-  - {fileID: 1803871461}
   - {fileID: 1899005936}
   - {fileID: 1868671097}
   - {fileID: 1881015234}
