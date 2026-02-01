@@ -1163,7 +1163,24 @@ MonoBehaviour:
   _oldLady: {fileID: 1614005487}
   _doorDasher: {fileID: 7351818300784775154}
   _businessman: {fileID: 1540872949912808925}
+  _characterEnterAnimStateName: enter
   _characterExitAnimStateName: exit
+  _characterSpawnInfos:
+  - <Time>k__BackingField: 12
+    <CharacterType>k__BackingField: 0
+    <HideCurrentlyShownCharacters>k__BackingField: 1
+  - <Time>k__BackingField: 27
+    <CharacterType>k__BackingField: 1
+    <HideCurrentlyShownCharacters>k__BackingField: 1
+  - <Time>k__BackingField: 49
+    <CharacterType>k__BackingField: 2
+    <HideCurrentlyShownCharacters>k__BackingField: 1
+  - <Time>k__BackingField: 60
+    <CharacterType>k__BackingField: 0
+    <HideCurrentlyShownCharacters>k__BackingField: 0
+  - <Time>k__BackingField: 70
+    <CharacterType>k__BackingField: 1
+    <HideCurrentlyShownCharacters>k__BackingField: 0
   _spawnOldLadyInputActionName: spawn-old-lady
   _spawnDoorDasherInputActionName: spawn-door-dasher
   _spawnBusinessManInputActionName: spawn-businessman
@@ -2004,7 +2021,7 @@ GameObject:
   - component: {fileID: 1895845769}
   - component: {fileID: 1895845768}
   m_Layer: 0
-  m_Name: background-blank_0
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2095,7 +2112,7 @@ GameObject:
   - component: {fileID: 1953413142}
   - component: {fileID: 1953413141}
   m_Layer: 0
-  m_Name: mask-overlay_0
+  m_Name: mask-overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
