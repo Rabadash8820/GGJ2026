@@ -88,9 +88,10 @@ namespace GGJ2026
                     if (inReleaseRange(noteIndicator))
                     {
                         Debug.Log($"Successfully held note of type {noteIndex}");
+                        NotesHitCount++;
                         noteIndicator.State = NoteState.Hit;
                         _noteHit.Invoke(noteIndicator);
-                        return;   
+                        return;
                     }
                     
                     noteIndicator.State = NoteState.Missed;
