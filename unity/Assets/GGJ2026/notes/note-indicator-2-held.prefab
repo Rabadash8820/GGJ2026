@@ -52,18 +52,6 @@ PrefabInstance:
       propertyPath: <NoteIndex>k__BackingField
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2746536438338791220, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2746536438338791220, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
-      propertyPath: m_Color.g
-      value: 0.48609695
-      objectReference: {fileID: 0}
-    - target: {fileID: 2746536438338791220, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4584905
-      objectReference: {fileID: 0}
     - target: {fileID: 8189243597567516809, guid: a0e555e7b318efb4abd2bb848f3159a6, type: 3}
       propertyPath: m_Name
       value: note-indicator-2-held
