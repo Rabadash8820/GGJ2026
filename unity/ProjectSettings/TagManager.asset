@@ -50,11 +50,11 @@ TagManager:
   - name: foreground
     uniqueID: 2144421515
     locked: 0
-  - name: notes
-    uniqueID: 1155409669
-    locked: 0
   - name: mask-overlay
     uniqueID: 3791546047
+    locked: 0
+  - name: notes
+    uniqueID: 1155409669
     locked: 0
   m_RenderingLayers:
   - Default
