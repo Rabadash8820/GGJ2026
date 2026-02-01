@@ -18,15 +18,26 @@ namespace GGJ2026
         private void Start()
         {
             var script = FileParser.Parse(_textAsset.text);
+
+            var startTime = Time.time;
+            var halfSecond = 0.5f;
+            float SyncDelay() => startTime - Time.time + halfSecond;
             
-            StartMusic.Invoke();
+            StartCoroutine(startMusic(SyncDelay()));
             foreach (var note in script.Notes)
             {
                 var absoluteBeat = note.Bar * Constants.BeatsPerMeasure + note.Beat;
                 var time = absoluteBeat / (script.BeatsPerMinute / 60) - Constants.StartupOffset;
 
-                StartCoroutine(spawnNote(note, (float)time));
+                StartCoroutine(spawnNote(note, (float)time + SyncDelay()));
             }
+        }
+
+        private IEnumerator startMusic(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            
+            StartMusic.Invoke();
         }
         
         private IEnumerator spawnNote(NoteData noteData, float delay)
