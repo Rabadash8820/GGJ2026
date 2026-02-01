@@ -43,7 +43,7 @@ namespace GGJ2026
 
             foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
             {
-                if (true //noteIndicator.NoteIndex == noteIndex
+                if (noteIndicator.NoteIndex == noteIndex
                     && noteIndicator.State == NoteState.Active
                     && inHitRange(noteIndicator)
                 )
