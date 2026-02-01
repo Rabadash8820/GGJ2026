@@ -15,9 +15,6 @@ namespace GGJ2026
 
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private NotesSpawner? _noteSpawner;
-
-        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
-        private SpriteRenderer? _hitBoxSpriteRenderer;
              
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)] 
         private Transform? _hitBoxTransform;
@@ -46,7 +43,7 @@ namespace GGJ2026
 
             foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
             {
-                if (noteIndicator.NoteIndex == noteIndex
+                if (true //noteIndicator.NoteIndex == noteIndex
                     && noteIndicator.State == NoteState.Active
                     && inHitRange(noteIndicator)
                 )
@@ -71,8 +68,7 @@ namespace GGJ2026
 
         private bool inHitRange(NoteIndicator note)
         {
-            return note.transform.position.x + note.Width >=
-                _hitBoxSpriteRenderer!.transform.position.x - _hitBoxSpriteRenderer.transform.localScale.x / 2f;
+            return  note.transform.position.x + note.Width >= _hitBoxTransform!.position.x - _hitBoxTransform.localScale.x / 2f;
         }
 
         private void releaseHoldNote(int noteIndex)
