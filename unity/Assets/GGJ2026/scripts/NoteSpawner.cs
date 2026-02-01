@@ -110,12 +110,12 @@ namespace GGJ2026
             Assert.IsTrue(noteIndicator != null);
 
             noteObject.name = string.Format(nameFormat, noteIndex, _noteCounts[noteIndex]);
-            noteIndicator.State = NoteState.Active;
+            noteIndicator!.State = NoteState.Active;
             noteObject.SetActive(false);
 
             ++_noteCounts[noteIndex];
 
-            return noteIndicator!;
+            return noteIndicator;
         }
     }
 }
