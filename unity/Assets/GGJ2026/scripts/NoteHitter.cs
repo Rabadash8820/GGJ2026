@@ -58,18 +58,18 @@ namespace GGJ2026
                     Debug.Log($"Successfully hit note of type {noteIndex}");
                     ++NotesHitCount;
                     noteIndicator.State = NoteState.Hit;
-                    _noteHit.Invoke(noteIndicator);
                     if (noteIndicator.HeldNoteIndicator is not null)
                     {
                         Debug.Log("HOLD");
                         noteIndicator.HeldNoteIndicator.State = NoteState.Held;
                     }
+                    _noteHit.Invoke(noteIndicator);
                     
                     return;
                 }
             }
 
-            Debug.Log($"Hit wrong note of type {noteIndex}");
+            //Debug.Log($"Hit wrong note of type {noteIndex}");
             _noteWrong.Invoke(noteIndex);
         }
 
@@ -82,10 +82,6 @@ namespace GGJ2026
         {
             foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
             {
-                if (noteIndicator.NoteIndex == noteIndex)
-                {
-                    Debug.Log($"Held: {noteIndicator.State == NoteState.Held}");
-                }
                 if (noteIndicator.NoteIndex == noteIndex
                     && noteIndicator.State == NoteState.Held) 
                 {
