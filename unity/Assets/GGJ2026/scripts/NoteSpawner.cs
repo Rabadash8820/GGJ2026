@@ -79,9 +79,11 @@ namespace GGJ2026
                 // NoteIndicator heldNoteIndicator = _noteHeldPools[noteData.NoteId].TryDequeue(out heldNoteIndicator)
                 //     ? heldNoteIndicator : instantiateNote(noteData.NoteId, true);
                 heldNoteIndicator.gameObject.SetActive(true);
-                heldNoteIndicator.transform.localScale = new Vector3((float)noteData.Duration, 1, 1);
-                heldNoteIndicator.transform.position += new Vector3((float)-noteData.Duration * 64, 0, 0);
+                heldNoteIndicator.transform.localScale = new Vector3(noteData.Duration, 1, 1);
+                heldNoteIndicator.transform.position += new Vector3(-noteData.Duration * 64, 0, 0);
+                heldNoteIndicator.RequiresHold = true;
                 _shownNotes.Add(noteIndicator);
+                noteIndicator.HeldNoteIndicator = heldNoteIndicator;
                 NoteSpawned.Invoke(heldNoteIndicator);
             }
         }
