@@ -1,5 +1,6 @@
 #nullable enable
 
+using System;
 using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace GGJ2026
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private TextAsset? _textAsset;
 
-        private float _startTime;
+        private double _startTime;
 
         [SerializeField] private AudioSource _audioSource;
 
@@ -38,19 +39,23 @@ namespace GGJ2026
             _musicScript = FileParser.Parse(_textAsset!.text);
             _beatsPerSec = _musicScript.BeatsPerMinute / 60f;
             _nextNoteTime = getGenerateNoteTime(_musicScript.Notes[0]);
+        }
+
+        private void Start()
+        {
             Debug.Log(_nextNoteTime);
             Debug.Log(_noteStartOffset);
             Debug.Log(NoteVisibilityDuration);
-            _startTime = Time.time;
+            _startTime = AudioSettings.dspTime + 0.25f;
             Debug.Log(_startTime);
-            _audioSource!.Play();
+            _audioSource!.PlayScheduled(_startTime);
         }
 
         private void Update()
         {
-            var time = Time.time - _startTime;
+            var time = AudioSettings.dspTime - _startTime;
             while (time >= _nextNoteTime) {
-                Debug.Log(Time.time);
+                Debug.Log($"{AudioSettings.dspTime} - {Time.time}");
                 _spawnNote.Invoke(_musicScript!.Notes[GeneratedNoteCount++]);
 
                 if (GeneratedNoteCount < _musicScript.Notes.Count) {
