@@ -2,26 +2,16 @@
 
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 namespace GGJ2026
 {
     public class GameOverMenuController : MonoBehaviour
     {
-        private VisualElement? _grpGameOver;
-        private Label? _lblNotesHit;
-        private Label? _lblNotesShown;
-        private Label? _lblAccuracy;
-        private Label? _lblWin;
-        private Label? _lblLose;
-
-        private string _lblNotesHitFormatString = "";
-        private string _lblNotesShownFormatString = "";
-        private string _lblAccuracyFormatString = "";
-
-        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
-        private UIDocument? _uiDocument;
+        private string _txtNotesHitFormatString = "";
+        private string _txtNotesShownFormatString = "";
+        private string _txtAccuracyFormatString = "";
 
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private NoteHitter? _noteHitter;
@@ -29,53 +19,50 @@ namespace GGJ2026
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private NotesGenerator? _notesGenerator;
 
-        [Header("Element Names")]
+        [Header("Audio")]
 
-        [SerializeField] private string _grpGameOverName = "grp-game-over";
-        [SerializeField] private string _lblWinName = "lbl-win";
-        [SerializeField] private string _lblLoseName = "lbl-lose";
-        [SerializeField] private string _lblNotesHitName = "lbl-notes-hit";
-        [SerializeField] private string _lblNotesShownName = "lbl-notes-shown";
-        [SerializeField] private string _lblAccuracyName = "lbl-accuracy";
-        [SerializeField] private string _btnMainMenuName = "btn-main-menu";
-        [SerializeField] private string _btnQuitName = "btn-quit";
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private AudioSource? _musicWin;
 
-        [Header("Events")]
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private AudioSource? _musicLose;
 
-        [field: SerializeField] public UnityEvent GoingToMainMenu { get; private set; } = new();
-        [field: SerializeField] public UnityEvent Quitting { get; private set; } = new();
+        [Header("UI")]
+
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private RectTransform? _rectWin;
+
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private RectTransform? _rectLose;
+
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private Text? _txtNotesHit;
+
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private Text? _txtNotesShown;
+
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private Text? _txtAccuracy;
 
         private void Awake()
         {
-            _grpGameOver = _uiDocument!.rootVisualElement.Query<VisualElement>(_grpGameOverName).First();
-            _lblNotesHit = _uiDocument!.rootVisualElement.Query<Label>(_lblNotesHitName).First();
-            _lblNotesShown = _uiDocument!.rootVisualElement.Query<Label>(_lblNotesShownName).First();
-            _lblAccuracy = _uiDocument!.rootVisualElement.Query<Label>(_lblAccuracyName).First();
-            _lblWin = _uiDocument!.rootVisualElement.Query<Label>(_lblWinName).First();
-            _lblLose = _uiDocument!.rootVisualElement.Query<Label>(_lblLoseName).First();
-
-            _lblNotesHitFormatString = _lblNotesHit.text;
-            _lblNotesShownFormatString = _lblNotesShown.text;
-            _lblAccuracyFormatString = _lblAccuracy.text;
-
-            Button btnMainMenu = _uiDocument!.rootVisualElement.Query<Button>(_btnMainMenuName).First();
-            Button btnQuit = _uiDocument!.rootVisualElement.Query<Button>(_btnQuitName).First();
-
-            btnMainMenu.clicked += GoingToMainMenu.Invoke;
-            btnQuit.clicked += Quitting.Invoke;
+            _txtNotesHitFormatString = _txtNotesHit!.text;
+            _txtNotesShownFormatString = _txtNotesShown!.text;
+            _txtAccuracyFormatString = _txtAccuracy!.text;
         }
 
         [Button]
         public void ShowMenu(bool didWin)
         {
-            _grpGameOver!.style.display = DisplayStyle.Flex;
+            _txtNotesHit!.text = string.Format(_txtNotesHitFormatString, _noteHitter!.NotesHitCount);
+            _txtNotesShown!.text = string.Format(_txtNotesShownFormatString, _notesGenerator!.GeneratedNoteCount);
+            _txtAccuracy!.text = string.Format(_txtAccuracyFormatString, (float)_noteHitter.NotesHitCount / _notesGenerator.GeneratedNoteCount);
 
-            _lblNotesHit!.text = string.Format(_lblNotesHitFormatString, _noteHitter!.NotesHitCount);
-            _lblNotesShown!.text = string.Format(_lblNotesShownFormatString, _notesGenerator!.GeneratedNoteCount);
-            _lblAccuracy!.text = string.Format(_lblAccuracyFormatString, (float)_noteHitter.NotesHitCount / _notesGenerator.GeneratedNoteCount);
+            _rectWin!.gameObject.SetActive(didWin);
+            _rectLose!.gameObject.SetActive(!didWin);
 
-            _lblWin!.style.display = didWin ? DisplayStyle.Flex : DisplayStyle.None;
-            _lblLose!.style.display = didWin ? DisplayStyle.None : DisplayStyle.Flex;
+            _musicWin!.gameObject.SetActive(didWin);
+            _musicLose!.gameObject.SetActive(!didWin);
         }
     }
 }
