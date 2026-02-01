@@ -75,12 +75,18 @@ namespace GGJ2026
             
             if (noteData.Duration > 1)
             {
+                const int heldNoteSize = 128;
+                const float beatsPerSecond = 150f / 60f;
+                const float noteVisibilityDuration = 0.5f;
+                const float expectedSizePerBeat = noteVisibilityDuration / beatsPerSecond * 1920;
+                const float relativeSizePerBeat = expectedSizePerBeat / heldNoteSize;
+                
                 NoteIndicator heldNoteIndicator = instantiateNote(noteData.NoteId, true);
                 // NoteIndicator heldNoteIndicator = _noteHeldPools[noteData.NoteId].TryDequeue(out heldNoteIndicator)
                 //     ? heldNoteIndicator : instantiateNote(noteData.NoteId, true);
                 heldNoteIndicator.gameObject.SetActive(true);
-                heldNoteIndicator.transform.localScale = new Vector3(noteData.Duration, 1, 1);
-                heldNoteIndicator.transform.position += new Vector3(-noteData.Duration * 64, 0, 0);
+                heldNoteIndicator.transform.localScale = new Vector3(noteData.Duration * relativeSizePerBeat, 1, 1);
+                heldNoteIndicator.transform.position += new Vector3(-noteData.Duration * expectedSizePerBeat / 2, 0, 0);
                 heldNoteIndicator.RequiresHold = true;
                 _shownNotes.Add(noteIndicator);
                 noteIndicator.HeldNoteIndicator = heldNoteIndicator;
