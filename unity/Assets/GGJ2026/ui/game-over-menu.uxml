@@ -2,9 +2,9 @@
     <ui:VisualElement name="grp-game-over" style="flex-grow: 1; background-color: rgb(0, 0, 0); display: none;">
         <ui:GroupBox name="menu">
             <ui:Label text="GAME OVER" name="hdr" enable-rich-text="false" style="color: rgb(255, 255, 255); -unity-text-align: upper-center; font-size: 28px; -unity-font-style: bold;"/>
-            <ui:Label text="Notes hit: {0}" name="lbl-notes-hit" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
-            <ui:Label text="Notes shown: {0}" name="lbl-notes-shown" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
-            <ui:Label text="Accuracy: {0:P}" name="lbl-accuracy" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
+            <ui:Label text="&lt;b&gt;Notes hit:&lt;/b&gt; {0}" name="lbl-notes-hit" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
+            <ui:Label text="&lt;b&gt;Notes shown:&lt;/b&gt; {0}" name="lbl-notes-shown" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
+            <ui:Label text="&lt;b&gt;Accuracy:&lt;/b&gt; {0:P}" name="lbl-accuracy" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
             <ui:Button text="Main Menu" name="btn-main-menu"/>
             <ui:Button text="Quit" name="btn-quit"/>
         </ui:GroupBox>
