@@ -2,9 +2,9 @@
     <ui:VisualElement name="grp-paused" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.5); display: none;">
         <ui:GroupBox name="menu">
             <ui:Label text="PAUSED" name="hdr" enable-rich-text="false" style="-unity-text-align: upper-center; font-size: 28px; color: rgb(255, 255, 255); -unity-font-style: bold;"/>
-            <ui:Button text="Resume" name="btn-resume"/>
-            <ui:Button text="Main Menu" name="btn-main-menu"/>
-            <ui:Button text="Quit" name="btn-quit"/>
+            <ui:Button text="" name="btn-resume" enable-rich-text="false" style="height: 100px; background-image: url(&quot;project://database/Assets/GGJ2026/ui/btn-resume.png?fileID=21300000&amp;guid=6c2aa7dde35695d4785a498f279dfb4b&amp;type=3#btn-resume&quot;); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; -unity-background-scale-mode: scale-to-fit; background-color: rgba(188, 188, 188, 0);"/>
+            <ui:Button text="" name="btn-main-menu" enable-rich-text="false" style="background-image: url(&quot;project://database/Assets/GGJ2026/ui/btn-menu.png?fileID=21300000&amp;guid=8eb1da5c4e483ee44a91d466f3d4f9fe&amp;type=3#btn-menu&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; -unity-background-scale-mode: scale-to-fit; height: 100px; top: -40px;"/>
+            <ui:Button text="" name="btn-quit" enable-rich-text="false" style="height: 100px; background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; -unity-background-scale-mode: scale-to-fit; background-image: url(&quot;project://database/Assets/GGJ2026/ui/btn-quit.png?fileID=21300000&amp;guid=d6f6540278008f743a02ae95fcd1c850&amp;type=3#btn-quit&quot;); top: -80px;"/>
         </ui:GroupBox>
     </ui:VisualElement>
 </ui:UXML>

@@ -18,6 +18,8 @@ unity/*.slnx
 
 unity/.vsconfig
 
+builds/*
+
 
 #########################
 ## Unity Assets
