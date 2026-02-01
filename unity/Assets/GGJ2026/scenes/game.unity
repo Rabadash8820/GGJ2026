@@ -1001,6 +1001,7 @@ MonoBehaviour:
   _oldLady: {fileID: 1614005487}
   _doorDasher: {fileID: 7351818300784775154}
   _businessman: {fileID: 1540872949912808925}
+  _characterIdleAnimStateName: idle
   _characterEnterAnimStateName: enter
   _characterExitAnimStateName: exit
   _characterSpawnInfos:
