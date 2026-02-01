@@ -28,6 +28,7 @@ namespace GGJ2026
         private readonly Dictionary<CharacterType, Character> _shownCharacters = new();
         private float _tElapsed;
         private int _nextSpawnDataIndex = 0;
+        private int _idleAnimStateNameHash;
 
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private Character? _oldLady;
@@ -36,6 +37,7 @@ namespace GGJ2026
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private Character? _businessman;
 
+        [SerializeField] private string _characterIdleAnimStateName = "idle";
         [SerializeField] private string _characterEnterAnimStateName = "enter";
         [SerializeField] private string _characterExitAnimStateName = "exit";
 
@@ -49,6 +51,8 @@ namespace GGJ2026
 
         private void Awake()
         {
+            _idleAnimStateNameHash = Animator.StringToHash(_characterIdleAnimStateName);
+
             InputSystem.actions[_spawnOldLadyInputActionName].performed += ctx => ShowCharacter(CharacterType.OldLady);
             InputSystem.actions[_spawnDoorDasherInputActionName].performed += ctx => ShowCharacter(CharacterType.DoorDasher);
             InputSystem.actions[_spawnBusinessManInputActionName].performed += ctx => ShowCharacter(CharacterType.Businessman);
@@ -95,8 +99,12 @@ namespace GGJ2026
         public void ShowCharacterMistakeEffects()
         {
             foreach (Character character in _shownCharacters.Values) {
-                character.AnimatorStateRestarter!.RestartCurrentState();
-                character.Animator!.Play(character.MistakeAnimStateName);
+                int animStateNameHash = character.Animator!.GetCurrentAnimatorStateInfo(layerIndex: 0).shortNameHash;
+                if (animStateNameHash == _idleAnimStateNameHash || animStateNameHash == character.MistakeAnimStateNameHash) {
+                    // Don't interrupt enter/exit animations with mistakes, only idle or already-running mistake animations
+                    character.AnimatorStateRestarter!.RestartCurrentState();
+                    character.Animator!.Play(character.MistakeAnimStateName);
+                }
             }
         }
 
