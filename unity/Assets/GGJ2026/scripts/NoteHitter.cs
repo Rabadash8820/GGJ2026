@@ -17,6 +17,9 @@ namespace GGJ2026
         private NotesSpawner? _noteSpawner;
 
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        private SpriteRenderer? _hitBoxSpriteRenderer;
+             
+        [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)] 
         private Transform? _hitBoxTransform;
 
         [SerializeField] private UnityEvent<int> _hitAttempted = new();
@@ -41,7 +44,7 @@ namespace GGJ2026
             Debug.Log($"Hitting note of type {noteIndex}...");
             _hitAttempted.Invoke(noteIndex);
 
-            foreach (NoteIndicator noteIndicator in _noteSpawner!.ShownNotes) 
+            foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
             {
                 if (noteIndicator.NoteIndex == noteIndex
                     && noteIndicator.State == NoteState.Active
@@ -56,6 +59,7 @@ namespace GGJ2026
 
                     Debug.Log($"Successfully hit note of type {noteIndex}");
                     ++NotesHitCount;
+                    noteIndicator.State = NoteState.Hit;
                     _noteHit.Invoke(noteIndicator);
                     return;
                 }
@@ -65,12 +69,15 @@ namespace GGJ2026
             _noteWrong.Invoke(noteIndex);
         }
 
-        private bool inHitRange(NoteIndicator noteIndicator) =>
-            noteIndicator.transform.position.x + noteIndicator.Width >= _hitBoxTransform!.position.x - _hitBoxTransform.localScale.x / 2f;
+        private bool inHitRange(NoteIndicator note)
+        {
+            return note.transform.position.x + note.Width >=
+                _hitBoxSpriteRenderer!.transform.position.x - _hitBoxSpriteRenderer.transform.localScale.x / 2f;
+        }
 
         private void releaseHoldNote(int noteIndex)
         {
-            foreach (NoteIndicator noteIndicator in _noteSpawner!.ShownNotes) 
+            foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
             {
                 if (noteIndicator.NoteIndex == noteIndex
                     && noteIndicator.State == NoteState.Held) 
@@ -78,6 +85,7 @@ namespace GGJ2026
                     if (inReleaseRange(noteIndicator))
                     {
                         Debug.Log($"Successfully held note of type {noteIndex}");
+                        noteIndicator.State = NoteState.Hit;
                         _noteHit.Invoke(noteIndicator);
                         return;   
                     }

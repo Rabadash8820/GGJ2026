@@ -27,13 +27,18 @@ namespace GGJ2026
             for (int i = 0; i < _noteIndicators!.Count; i++) {
                 NoteIndicator noteIndicator = _noteIndicators![i];
                 noteIndicator.transform.position += delta;
-                if (noteIndicator.transform.position.x - (noteIndicator.transform.localScale.x * 64) > _missedX) {
+                if (noteIndicator.State is NoteState.Active or NoteState.Held && passedHitArea(noteIndicator)) {
                     _noteIndicators[i] = _noteIndicators[^1];
                     _noteIndicators.RemoveAt(_noteIndicators.Count - 1);
                     Debug.Log($"Missed note of type {noteIndicator.NoteIndex}");
                     NoteMissed.Invoke(noteIndicator);
                 }
             }
+        }
+
+        private bool passedHitArea(NoteIndicator note)
+        {
+            return note.transform.position.x - (note.transform.localScale.x * 64) > _missedX;
         }
 
         public void StartMoving(NoteIndicator noteIndicator) => _noteIndicators.Add(noteIndicator);
