@@ -51,6 +51,7 @@ namespace GGJ2026
                     if (noteIndicator.RequiresHold)
                     {
                         noteIndicator.State = NoteState.Held;
+                        Debug.Log("HOLD!");
                         return;
                     }
 
@@ -58,6 +59,12 @@ namespace GGJ2026
                     ++NotesHitCount;
                     noteIndicator.State = NoteState.Hit;
                     _noteHit.Invoke(noteIndicator);
+                    if (noteIndicator.HeldNoteIndicator is not null)
+                    {
+                        Debug.Log("HOLD");
+                        noteIndicator.HeldNoteIndicator.State = NoteState.Held;
+                    }
+                    
                     return;
                 }
             }
