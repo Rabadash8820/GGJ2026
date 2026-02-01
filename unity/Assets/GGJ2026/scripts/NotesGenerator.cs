@@ -1,5 +1,6 @@
 #nullable enable
 
+using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +9,6 @@ namespace GGJ2026
 {
     public class NotesGenerator : MonoBehaviour
     {
-        private int _nextNoteIndex;
         private float _nextNoteTime;
         private float _beatsPerSec;
         private MusicScript? _musicScript;
@@ -19,11 +19,15 @@ namespace GGJ2026
         [Tooltip("Offset, in seconds, to sync up notes with the start of the actual music audio")]
         [SerializeField] private float _noteStartOffset = 3f;
 
+        [SerializeField] private float _afterMusicDelaySeconds = 5f;
+
         [SerializeField] private UnityEvent<NoteData> _spawnNote = new();
         [SerializeField] private UnityEvent _endMusic = new();
 
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private TextAsset? _textAsset;
+
+        public int GeneratedNoteCount { get; private set; }
 
         private void Awake()
         {
@@ -36,17 +40,24 @@ namespace GGJ2026
         {
             float time = Time.timeSinceLevelLoad;
             while (time >= _nextNoteTime) {
-                _spawnNote.Invoke(_musicScript!.Notes[_nextNoteIndex]);
+                _spawnNote.Invoke(_musicScript!.Notes[GeneratedNoteCount]);
 
-                ++_nextNoteIndex;
-                if (_nextNoteIndex < _musicScript.Notes.Count) {
-                    _nextNoteTime = getGenerateNoteTime(_musicScript.Notes[_nextNoteIndex]);
+                ++GeneratedNoteCount;
+                if (GeneratedNoteCount < _musicScript.Notes.Count) {
+                    _nextNoteTime = getGenerateNoteTime(_musicScript.Notes[GeneratedNoteCount]);
                 }
                 else {
-                    Debug.Log("End of music reached");
+                    Debug.Log($"End of music reached. Now delaying for {_afterMusicDelaySeconds} seconds...");
                     _nextNoteTime = float.PositiveInfinity;
-                    _endMusic.Invoke();
+                    _ = waitAfterMusicAsync();  // Fire and forget
                 }
+            }
+
+            async Awaitable waitAfterMusicAsync()
+            {
+                await Awaitable.WaitForSecondsAsync(_afterMusicDelaySeconds, destroyCancellationToken);
+                Debug.Log($"{_afterMusicDelaySeconds} second delay complete. Ending...");
+                _endMusic.Invoke();
             }
         }
 

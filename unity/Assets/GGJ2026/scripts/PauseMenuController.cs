@@ -47,7 +47,7 @@ namespace GGJ2026
                 Time.timeScale = 1f;    // Otherwise, next play will start paused
                 GoingToMainMenu.Invoke();
             };
-            _btnQuit.clicked += () => Quitting.Invoke();
+            _btnQuit.clicked += Quitting.Invoke;
         }
 
         private void togglePause(bool isPaused)

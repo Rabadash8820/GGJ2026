@@ -55,7 +55,7 @@ namespace GGJ2026
                 for (int i = 0; i < _initialNoteCount; i++)
                 {
                     _notePools[n].Enqueue(instantiateNote(n));
-                    _noteHeldPools[n].Enqueue(instantiateNote(n, true));                    
+                    _noteHeldPools[n].Enqueue(instantiateNote(n, true));
                 }
             }
         }
@@ -64,9 +64,9 @@ namespace GGJ2026
         {
             Assert.IsTrue(noteData.NoteId >= 0);
             
-            Debug.Log($"Showing note: {noteData.Bar}:{noteData.Beat} [Id-{noteData.NoteId}] {noteData.Duration}");        
-            
-            var noteIndicator = instantiateNote(noteData.NoteId);
+            Debug.Log($"Showing note: {noteData.Bar}:{noteData.Beat} [Id-{noteData.NoteId}] {noteData.Duration}");
+
+            NoteIndicator noteIndicator = instantiateNote(noteData.NoteId);
             // NoteIndicator noteIndicator = _notePools[noteData.NoteId].TryDequeue(out noteIndicator) 
             //     ? noteIndicator : instantiateNote(noteData.NoteId);
             noteIndicator.gameObject.SetActive(true);
@@ -75,7 +75,7 @@ namespace GGJ2026
             
             if (noteData.Duration > 1)
             {
-                var heldNoteIndicator = instantiateNote(noteData.NoteId, true);
+                NoteIndicator heldNoteIndicator = instantiateNote(noteData.NoteId, true);
                 // NoteIndicator heldNoteIndicator = _noteHeldPools[noteData.NoteId].TryDequeue(out heldNoteIndicator)
                 //     ? heldNoteIndicator : instantiateNote(noteData.NoteId, true);
                 heldNoteIndicator.gameObject.SetActive(true);
