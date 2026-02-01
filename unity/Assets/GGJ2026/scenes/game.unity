@@ -470,7 +470,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 0850a9495c6d80d4fb7121a1abc42d42, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GGJ2026::GGJ2026.NotesGenerator
   <NoteVisibilityDuration>k__BackingField: 0.5
-  _noteStartOffset: 0.5
+  _noteStartOffset: 1.75
   _afterMusicDelaySeconds: 5
   _spawnNote:
     m_PersistentCalls:
@@ -1958,6 +1958,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _textAsset: {fileID: 4900000, guid: 344693c569995b241ab9c457a1c2bffb, type: 3}
+  _audioSource: {fileID: 176058991}
 --- !u!222 &969323764
 CanvasRenderer:
   m_ObjectHideFlags: 0
