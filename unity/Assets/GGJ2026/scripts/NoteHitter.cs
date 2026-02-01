@@ -17,7 +17,7 @@ namespace GGJ2026
         private NotesSpawner? _noteSpawner;
 
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
-        private SpriteRenderer? _hitBoxSpriteRenderer;
+        private Transform? _hitBoxTransform;
 
         [SerializeField] private UnityEvent<int> _hitAttempted = new();
         [SerializeField] private UnityEvent<NoteIndicator> _noteHit = new();
@@ -39,7 +39,7 @@ namespace GGJ2026
             Debug.Log($"Hitting note of type {noteIndex}...");
             _hitAttempted.Invoke(noteIndex);
 
-            foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
+            foreach (NoteIndicator noteIndicator in _noteSpawner!.ShownNotes) 
             {
                 if (noteIndicator.NoteIndex == noteIndex
                     && noteIndicator.State == NoteState.Active
@@ -62,15 +62,12 @@ namespace GGJ2026
             _noteWrong.Invoke(noteIndex);
         }
 
-        private bool inHitRange(NoteIndicator note)
-        {
-            return note.transform.position.x + note.Width >=
-                _hitBoxSpriteRenderer!.transform.position.x - _hitBoxSpriteRenderer.transform.localScale.x / 2f;
-        }
+        private bool inHitRange(NoteIndicator noteIndicator) =>
+            noteIndicator.transform.position.x + noteIndicator.Width >= _hitBoxTransform!.position.x - _hitBoxTransform.localScale.x / 2f;
 
         private void releaseHoldNote(int noteIndex)
         {
-            foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
+            foreach (NoteIndicator noteIndicator in _noteSpawner!.ShownNotes) 
             {
                 if (noteIndicator.NoteIndex == noteIndex
                     && noteIndicator.State == NoteState.Held) 
@@ -89,10 +86,7 @@ namespace GGJ2026
             }
         }
 
-        private bool inReleaseRange(NoteIndicator note)
-        {
-            return note.transform.position.x - note.Width / 2 >=
-                   _hitBoxSpriteRenderer!.transform.position.x - _hitBoxSpriteRenderer.transform.localScale.x / 2f;
-        }
+        private bool inReleaseRange(NoteIndicator note) =>
+            note.transform.position.x - note.Width / 2 >= _hitBoxTransform!.position.x - _hitBoxTransform.localScale.x / 2f;
     }
 }
