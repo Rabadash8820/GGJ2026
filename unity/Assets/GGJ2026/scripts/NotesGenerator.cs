@@ -29,6 +29,8 @@ namespace GGJ2026
 
         private float _startTime;
 
+        [SerializeField] private AudioSource _audioSource;
+
         public int GeneratedNoteCount { get; private set; }
 
         private void Awake()
@@ -36,13 +38,19 @@ namespace GGJ2026
             _musicScript = FileParser.Parse(_textAsset!.text);
             _beatsPerSec = _musicScript.BeatsPerMinute / 60f;
             _nextNoteTime = getGenerateNoteTime(_musicScript.Notes[0]);
+            Debug.Log(_nextNoteTime);
+            Debug.Log(_noteStartOffset);
+            Debug.Log(NoteVisibilityDuration);
             _startTime = Time.time;
+            Debug.Log(_startTime);
+            _audioSource!.Play();
         }
 
         private void Update()
         {
             var time = Time.time - _startTime;
             while (time >= _nextNoteTime) {
+                Debug.Log(Time.time);
                 _spawnNote.Invoke(_musicScript!.Notes[GeneratedNoteCount++]);
 
                 if (GeneratedNoteCount < _musicScript.Notes.Count) {
@@ -71,8 +79,8 @@ namespace GGJ2026
         /// <returns></returns>
         private float getGenerateNoteTime(NoteData noteData)
         {
-            float beat = noteData.Bar * Constants.BeatsPerMeasure + noteData.Beat - 4;
-            return beat / _beatsPerSec - _noteStartOffset - NoteVisibilityDuration;
+            var beat = noteData.Bar * Constants.BeatsPerMeasure + noteData.Beat - 4;
+            return (beat - 1) / _beatsPerSec - _noteStartOffset - NoteVisibilityDuration;
         }
     }
 }
