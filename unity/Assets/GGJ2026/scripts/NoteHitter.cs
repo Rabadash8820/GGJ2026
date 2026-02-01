@@ -82,6 +82,10 @@ namespace GGJ2026
         {
             foreach (var noteIndicator in _noteSpawner!.ShownNotes) 
             {
+                if (noteIndicator.NoteIndex == noteIndex)
+                {
+                    Debug.Log($"Held: {noteIndicator.State == NoteState.Held}");
+                }
                 if (noteIndicator.NoteIndex == noteIndex
                     && noteIndicator.State == NoteState.Held) 
                 {
@@ -101,7 +105,10 @@ namespace GGJ2026
             }
         }
 
-        private bool inReleaseRange(NoteIndicator note) =>
-            note.transform.position.x - note.Width / 2 >= _hitBoxTransform!.position.x - _hitBoxTransform.localScale.x / 2f;
+        private bool inReleaseRange(NoteIndicator note)
+        {
+            Debug.Log($"Release - {note.transform.position.x - note.Width / 2} vs {_hitBoxTransform!.position.x - _hitBoxTransform.localScale.x / 2f}");
+            return note.transform.position.x - note.Width / 2 >= _hitBoxTransform!.position.x - _hitBoxTransform.localScale.x / 2f;
+        }
     }
 }

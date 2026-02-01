@@ -27,6 +27,8 @@ namespace GGJ2026
         [SerializeField, RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
         private TextAsset? _textAsset;
 
+        private float _startTime;
+
         public int GeneratedNoteCount { get; private set; }
 
         private void Awake()
@@ -34,11 +36,12 @@ namespace GGJ2026
             _musicScript = FileParser.Parse(_textAsset!.text);
             _beatsPerSec = _musicScript.BeatsPerMinute / 60f;
             _nextNoteTime = getGenerateNoteTime(_musicScript.Notes[0]);
+            _startTime = Time.time;
         }
 
         private void Update()
         {
-            float time = Time.timeSinceLevelLoad;
+            var time = Time.time - _startTime;
             while (time >= _nextNoteTime) {
                 _spawnNote.Invoke(_musicScript!.Notes[GeneratedNoteCount++]);
 
@@ -68,7 +71,7 @@ namespace GGJ2026
         /// <returns></returns>
         private float getGenerateNoteTime(NoteData noteData)
         {
-            float beat = noteData.Bar * Constants.BeatsPerMeasure + noteData.Beat;
+            float beat = noteData.Bar * Constants.BeatsPerMeasure + noteData.Beat - 4;
             return beat / _beatsPerSec - _noteStartOffset - NoteVisibilityDuration;
         }
     }
