@@ -23,6 +23,8 @@
 
 # Non-Unity-specific assets
 
+*.zip lfs
+
 # Fonts
 *.ttf lfs
 *.otf lfs
