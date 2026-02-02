@@ -1177,7 +1177,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: e5e01cec462857f499b52513008c9b5e, type: 2}
         m_TargetAssemblyTypeName: UnityUtil.SceneLoadManager, UnityUtil
-        m_MethodName: LoadAdditiveSceneAsync
+        m_MethodName: LoadSingleSceneAsync
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
